@@ -1,0 +1,12 @@
+'use strict';
+const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
+const events={},deleted=[],writes=[];let offline=false,claimed=false,installed=[];
+const cached={cached:true};
+const sandbox={URL,self:{location:{origin:'https://example.test'},addEventListener:(name,fn)=>events[name]=fn,skipWaiting(){},clients:{claim:()=>{claimed=true;return Promise.resolve()}}},caches:{open:async()=>({addAll:async names=>{installed=names},put:async(...args)=>writes.push(args)}),keys:async()=>['hellbound-ashen-gate-old','unrelated-app'],delete:async name=>deleted.push(name),match:async()=>cached},fetch:async()=>{if(offline)throw Error('offline');return {ok:true,clone:()=>({copy:true})}}};
+vm.runInNewContext(fs.readFileSync('sw.js','utf8'),sandbox);
+(async()=>{let work;events.install({waitUntil:p=>work=p});await work;assert.ok(installed.includes('./index.html'));assert.ok(installed.every(x=>x.startsWith('./')));
+ events.activate({waitUntil:p=>work=p});await work;assert.deepEqual(deleted,['hellbound-ashen-gate-old']);assert.equal(claimed,true);
+ let result,extra;const req={url:'https://example.test/ds/',method:'GET',mode:'navigate'};events.fetch({request:req,respondWith:p=>result=p,waitUntil:p=>extra=p});await result;await extra;assert.equal(writes[0][0],'./index.html');offline=true;events.fetch({request:req,respondWith:p=>result=p});assert.equal(await result,cached);
+ let intercepted=false;events.fetch({request:{...req,url:'https://outside.test/'},respondWith:()=>intercepted=true});assert.equal(intercepted,false);
+ console.log('PASS offline shell, relative paths, update cleanup, network navigation and offline fallback');
+})().catch(err=>{console.error(err);process.exitCode=1});
