@@ -64,7 +64,7 @@ normalizeSave=function(input){
  s.tiers=Array.from({length:48},(_,i)=>safeInt(source.tiers?.[old?Math.floor(i/3):i],3));
  s.stars=Array.from({length:48},(_,i)=>s.campaign.cleared[i]?clamp(safeInt(source.stars?.[old?Math.floor(i/3):i],4),1,4):0);
  s.gear=cleanGear(input.gear?.length?input.gear:s.gear);if(!s.gear.length)s.gear=starterGear();
- s.worn=Object.fromEntries(Object.keys(SLOT_RULES).map(slot=>{const id=input.worn?.[slot]??s.worn?.[slot];return [slot,s.gear.find(it=>it.id===id&&it.slot===slot)?.id||null];}));
+ s.worn=Object.fromEntries(Object.keys(SLOT_RULES).map(slot=>{const id=Object.prototype.hasOwnProperty.call(input.worn||{},slot)?input.worn[slot]:s.worn?.[slot];return [slot,s.gear.find(it=>it.id===id&&it.slot===slot)?.id||null];}));
  s.materials=Array.from({length:4},(_,i)=>safeInt(input.materials?.[i],9999));
  s.relicRanks=Array.from({length:6},(_,i)=>safeInt(input.relicRanks?.[i],5));
  s.recipes=Array.from(new Set((Array.isArray(input.recipes)?input.recipes:[]).filter(id=>RECIPES.some(r=>r.id===id))));
