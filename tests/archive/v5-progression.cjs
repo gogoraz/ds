@@ -1,7 +1,7 @@
 'use strict';
 // Deterministic simulation and persistence regression checks. No browser dependencies.
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const html=fs.readFileSync('index.html','utf8');
+const html=fs.readFileSync('DS-v5.0.html','utf8');
 const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 const expose=`globalThis.test={fresh,normalize,playerStats,equipmentBonus,start,update,levelUp,hitEnemy,spawnEnemy,spawnBoss,finish,checkpoint,load,persist,resetInput,dash,useSkill,stages,crypt,talents,shop,gear,settings,low,get save(){return save},set save(s){save=s},get run(){return run},get phase(){return phase},set phase(p){phase=p},get joy(){return joy},enemyPool,shotPool,orbPool,fxPool,numPool,grantXp,buildGrid,resize,keys,fullScreen};`;
 const source=script.replace('// BOOT -----------------------------------------------------------------------',expose+'\n// BOOT -----------------------------------------------------------------------');

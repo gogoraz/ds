@@ -1,0 +1,173 @@
+{
+  "scenario": "Heuristic player, sequential carry build, purchases after victories, actual terrain, 30 Hz simulation. Not human win rates or device FPS.",
+  "results": [
+    {
+      "zone": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 138.9,
+      "kills": 304,
+      "level": 12,
+      "hp": 104.4,
+      "gold": 182,
+      "weapons": [
+        [
+          0,
+          2,
+          false
+        ],
+        [
+          3,
+          2,
+          false
+        ],
+        [
+          2,
+          2,
+          false
+        ],
+        [
+          1,
+          2,
+          false
+        ],
+        [
+          10,
+          1,
+          false
+        ],
+        [
+          4,
+          2,
+          false
+        ]
+      ]
+    },
+    {
+      "zone": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 180.3,
+      "kills": 444,
+      "level": 17,
+      "hp": 117.2,
+      "gold": 246,
+      "weapons": [
+        [
+          0,
+          2,
+          false
+        ],
+        [
+          3,
+          2,
+          false
+        ],
+        [
+          2,
+          4,
+          false
+        ],
+        [
+          1,
+          4,
+          false
+        ],
+        [
+          10,
+          1,
+          false
+        ],
+        [
+          4,
+          2,
+          false
+        ]
+      ]
+    },
+    {
+      "zone": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 206.7,
+      "kills": 1008,
+      "level": 30,
+      "hp": 200,
+      "gold": 450,
+      "weapons": [
+        [
+          0,
+          3,
+          false
+        ],
+        [
+          3,
+          4,
+          false
+        ],
+        [
+          2,
+          5,
+          false
+        ],
+        [
+          1,
+          5,
+          false
+        ],
+        [
+          10,
+          3,
+          false
+        ],
+        [
+          4,
+          2,
+          false
+        ]
+      ]
+    },
+    {
+      "zone": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 225.5,
+      "kills": 1363,
+      "level": 40,
+      "hp": 211.9,
+      "gold": 537,
+      "weapons": [
+        [
+          0,
+          4,
+          false
+        ],
+        [
+          3,
+          5,
+          false
+        ],
+        [
+          2,
+          7,
+          false
+        ],
+        [
+          1,
+          6,
+          false
+        ],
+        [
+          10,
+          3,
+          false
+        ],
+        [
+          4,
+          4,
+          false
+        ]
+      ]
+    }
+  ]
+}
