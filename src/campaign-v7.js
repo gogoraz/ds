@@ -118,7 +118,7 @@ startRun=function(carry=null){
  Object.assign(run,{skillCDs:[0,0,0],guardianSpawned:false,eliteMarks:0,ambientTick:0,act:n.act,sub:n.sub,zone:n.zoneId,trial:n.trial,sandbox:sandboxMode,tier:save.tiers[selectedStage]||0,loot:[],eliteLoot:0,checkpointTimer:0,baseTime:n.duration,materials:[0,0,0,0],recipe:null,recipeRolled:false,relicCD:0});
  Object.assign(run.player,{mana:CLASS_PROFILES[selectedHero].mana,leapTime:0,leapMax:0,z:0,attackPose:0,drawAngle:0,buffPower:0,shieldTime:0,strafeTime:0,strafeTick:0,spinTick:0,moveType:'',vx:0,vy:0});
  if(carry&&carry.stage===selectedStage&&carry.hero===selectedHero){run.level=clamp(safeInt(carry.level),1,100);run.xp=clamp(carry.xp,0,xpToNext(run.level)-1);run.nextXP=xpToNext(run.level);run.weapons=carry.weapons.map(w=>({...w,cd:.25}));run.passives=new Uint8Array(carry.passives);}
- else if(selectedStage>0){const depth=Math.floor(selectedStage/3);run.level=1+Math.min(18,depth*2+n.trial);run.nextXP=xpToNext(run.level);run.weapons[0].level=Math.min(6,2+Math.floor(depth/3));run.passives[0]=Math.min(3,Math.floor(depth/4));for(const id of (selectedHero===1?[2,4,6]:[1,4,6]).slice(0,Math.min(3,1+Math.floor(depth/5))))if(!run.weapons.some(w=>w.id===id))run.weapons.push({id,level:Math.min(4,1+Math.floor(depth/4)),evolved:false,cd:.3});}
+ else if(selectedStage>0){const depth=n.zoneId;run.level=1+Math.min(32,depth*2+n.trial);run.nextXP=xpToNext(run.level);run.weapons[0].level=Math.min(8,2+Math.floor(depth/2));for(const [stat,rank]of [['might',Math.min(3,Math.floor(depth/4))],['health',Math.min(3,Math.floor(depth/4))],['armor',Math.min(2,Math.floor(depth/6))],['cooldown',Math.min(2,Math.floor(depth/6))]]){const id=PASSIVES.findIndex(p=>p.stat===stat);if(id>=0)run.passives[id]=rank;}for(const id of (selectedHero===1?[2,4,6]:[1,4,6]).slice(0,Math.min(3,1+Math.floor(depth/3))))if(!run.weapons.some(w=>w.id===id))run.weapons.push({id,level:Math.min(5,1+Math.floor(depth/3)),evolved:false,cd:.3});}
  if(sandboxBoss){run.time=n.duration;run.weapons[0].level=8;run.weapons[0].evolved=true;run.level=Math.max(run.level,20);run.passives[0]=3;run.passives[8]=3;}
  stats();run.player.hp=run.player.maxHp;run.player.mana=run.player.maxMana;Terrain.place(run.player,14);world.cx=1e9;world.stream();Input.reset();persist();
 };
@@ -126,7 +126,7 @@ spawnEnemy=function(id=0,elite=false,x=null,y=null,boss=-1){if(!run)return null;
  if(x===null){const a=rand(0,TAU),distance=Math.hypot(CONFIG.W,CONFIG.H)*.53+65;x=run.player.x+Math.cos(a)*distance;y=run.player.y+Math.sin(a)*distance;}
  const e=spawnEnemyV1(id,elite,x,y,boss);if(!e)return null;const n=levelInfo(),depth=n.zoneId,t=run.tier||0;
  e.levelGuardian=boss>=0;e.colorAct=n.act;e.attackPose=0;e.drawAngle=0;
- if(boss<0&&id!==99){e.maxHp=ENEMIES[id].hp*(1+depth*.22+n.trial*.1)*(1+run.time/60*.12)*(elite?4.5:1)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.speed*=.92+Math.min(.18,depth*.012)+Math.min(.1,run.time/1200);e.damage*=1+depth*.035+n.trial*.03+t*.07;}
+ if(boss<0&&id!==99){e.maxHp=ENEMIES[id].hp*(1+depth*.18+n.trial*.1)*(1+run.time/60*.12)*(elite?4.5:1)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.speed*=.92+Math.min(.18,depth*.012)+Math.min(.1,run.time/1200);e.damage*=1+depth*.025+n.trial*.03+t*.07;}
  if(boss>=0){e.maxHp=(720+depth*240+n.trial*210)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.damage=(17+depth*.9+n.trial)*(1+.07*t);e.speed*=.8;e.sprite='boss'+boss;e.name=n.guardian;}
  Terrain.place(e,e.r);return e;};
 const deathV6=enemyDeath;
