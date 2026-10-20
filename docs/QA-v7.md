@@ -18,3 +18,7 @@ node tests/act1-v6.cjs
 node tests/offline.cjs
 node tests/playtest.cjs
 ~~~
+
+## Recorded validation
+
+[Validation run](https://github.com/gogoraz/ds/actions/runs/39499526576) completed successfully: reproducible build, 25 v7 checks, 21 archived-v6 checks and the service-worker check. The deterministic Warden completed all 48 nodes on the first attempt with purchases between levels. See [the committed combat results](playtest-v7-results.json). This does not measure other classes' win rates or device performance.

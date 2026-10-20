@@ -1,0 +1,2123 @@
+{
+  "version": "7.0",
+  "sourceCommit": "4b81db6c0e056bcd592f25376271cac9e4c6a3a2",
+  "workflow": "https://github.com/gogoraz/ds/actions/runs/39499526576",
+  "scenario": "Deterministic heuristic player, Warden, sequential carry, real combat/terrain at 30 Hz, permanent purchases between attempts, at most three attempts per node. All 48 were won on the first attempt in this run. Mocked DOM/Canvas; no device FPS, rendered-browser or human win-rate measurement.",
+  "summary": {
+    "nodes": 48,
+    "attempts": 48,
+    "won": 48,
+    "functionalChecks": 25,
+    "archiveChecks": 21,
+    "offlineCheck": true
+  },
+  "results": [
+    {
+      "node": 1,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 111.8,
+      "kills": 196,
+      "level": 10,
+      "hp": 129.1,
+      "gold": 159,
+      "weapons": [
+        [
+          0,
+          2,
+          false
+        ],
+        [
+          1,
+          3,
+          false
+        ],
+        [
+          2,
+          3,
+          false
+        ],
+        [
+          5,
+          1,
+          false
+        ],
+        [
+          8,
+          1,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 2,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 132.1,
+      "kills": 219,
+      "level": 14,
+      "hp": 139.5,
+      "gold": 174,
+      "weapons": [
+        [
+          0,
+          4,
+          false
+        ],
+        [
+          1,
+          4,
+          false
+        ],
+        [
+          2,
+          4,
+          false
+        ],
+        [
+          5,
+          2,
+          false
+        ],
+        [
+          8,
+          1,
+          false
+        ],
+        [
+          4,
+          1,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 3,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 175,
+      "kills": 355,
+      "level": 18,
+      "hp": 106.7,
+      "gold": 230,
+      "weapons": [
+        [
+          0,
+          6,
+          false
+        ],
+        [
+          1,
+          4,
+          false
+        ],
+        [
+          2,
+          6,
+          false
+        ],
+        [
+          5,
+          2,
+          false
+        ],
+        [
+          8,
+          2,
+          false
+        ],
+        [
+          4,
+          1,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 4,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 125.6,
+      "kills": 247,
+      "level": 20,
+      "hp": 196.5,
+      "gold": 190,
+      "weapons": [
+        [
+          0,
+          6,
+          false
+        ],
+        [
+          1,
+          6,
+          false
+        ],
+        [
+          2,
+          7,
+          false
+        ],
+        [
+          5,
+          2,
+          false
+        ],
+        [
+          8,
+          2,
+          false
+        ],
+        [
+          4,
+          1,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 5,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 144.9,
+      "kills": 268,
+      "level": 22,
+      "hp": 213.6,
+      "gold": 192,
+      "weapons": [
+        [
+          0,
+          7,
+          false
+        ],
+        [
+          1,
+          6,
+          false
+        ],
+        [
+          2,
+          7,
+          false
+        ],
+        [
+          5,
+          2,
+          false
+        ],
+        [
+          8,
+          5,
+          false
+        ],
+        [
+          4,
+          2,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 6,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 164.9,
+      "kills": 385,
+      "level": 25,
+      "hp": 224,
+      "gold": 222,
+      "weapons": [
+        [
+          0,
+          8,
+          false
+        ],
+        [
+          1,
+          7,
+          false
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          3,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          2,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 7,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 139.3,
+      "kills": 283,
+      "level": 26,
+      "hp": 213,
+      "gold": 200,
+      "weapons": [
+        [
+          0,
+          8,
+          false
+        ],
+        [
+          1,
+          8,
+          false
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          4,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          3,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 8,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 162.1,
+      "kills": 410,
+      "level": 28,
+      "hp": 244.8,
+      "gold": 244,
+      "weapons": [
+        [
+          0,
+          8,
+          false
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          4,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          3,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 9,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 186.2,
+      "kills": 511,
+      "level": 30,
+      "hp": 243.9,
+      "gold": 270,
+      "weapons": [
+        [
+          0,
+          8,
+          false
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          7,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          6,
+          false
+        ]
+      ]
+    },
+    {
+      "node": 10,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 154.2,
+      "kills": 381,
+      "level": 31,
+      "hp": 244.8,
+      "gold": 339,
+      "weapons": [
+        [
+          0,
+          8,
+          false
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 11,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 174,
+      "kills": 467,
+      "level": 33,
+      "hp": 255.2,
+      "gold": 275,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 12,
+      "attempt": 1,
+      "act": 1,
+      "won": true,
+      "ended": true,
+      "seconds": 193.2,
+      "kills": 568,
+      "level": 35,
+      "hp": 255.2,
+      "gold": 382,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 13,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 117.6,
+      "kills": 266,
+      "level": 36,
+      "hp": 255.2,
+      "gold": 355,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 14,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 139.7,
+      "kills": 359,
+      "level": 37,
+      "hp": 255.2,
+      "gold": 437,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 15,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 157.9,
+      "kills": 431,
+      "level": 39,
+      "hp": 265.6,
+      "gold": 633,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 16,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 133.8,
+      "kills": 322,
+      "level": 40,
+      "hp": 276,
+      "gold": 449,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 17,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 152.6,
+      "kills": 417,
+      "level": 41,
+      "hp": 276,
+      "gold": 484,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 18,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 173.1,
+      "kills": 466,
+      "level": 44,
+      "hp": 274.1,
+      "gold": 678,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 19,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 148.6,
+      "kills": 406,
+      "level": 47,
+      "hp": 276,
+      "gold": 520,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 20,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 167.8,
+      "kills": 492,
+      "level": 49,
+      "hp": 276,
+      "gold": 573,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 21,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 188.8,
+      "kills": 582,
+      "level": 53,
+      "hp": 276,
+      "gold": 732,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 22,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 162.8,
+      "kills": 454,
+      "level": 54,
+      "hp": 276,
+      "gold": 443,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 23,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 183.4,
+      "kills": 552,
+      "level": 55,
+      "hp": 276,
+      "gold": 463,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 24,
+      "attempt": 1,
+      "act": 2,
+      "won": true,
+      "ended": true,
+      "seconds": 203.1,
+      "kills": 669,
+      "level": 57,
+      "hp": 276,
+      "gold": 629,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 25,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 128.3,
+      "kills": 906,
+      "level": 59,
+      "hp": 276,
+      "gold": 637,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 26,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 150.2,
+      "kills": 1186,
+      "level": 62,
+      "hp": 276,
+      "gold": 734,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 27,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 167.6,
+      "kills": 1430,
+      "level": 65,
+      "hp": 276,
+      "gold": 888,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 28,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 143.6,
+      "kills": 1204,
+      "level": 68,
+      "hp": 276,
+      "gold": 832,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 29,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 163,
+      "kills": 1403,
+      "level": 73,
+      "hp": 275.1,
+      "gold": 961,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 30,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 182.5,
+      "kills": 1685,
+      "level": 77,
+      "hp": 276,
+      "gold": 1099,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 31,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 158,
+      "kills": 1320,
+      "level": 80,
+      "hp": 275.5,
+      "gold": 820,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 32,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 177.9,
+      "kills": 1414,
+      "level": 83,
+      "hp": 274.1,
+      "gold": 842,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 33,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 198,
+      "kills": 1631,
+      "level": 85,
+      "hp": 276,
+      "gold": 956,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 34,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 173.2,
+      "kills": 1382,
+      "level": 86,
+      "hp": 268.3,
+      "gold": 747,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 35,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 192.9,
+      "kills": 1722,
+      "level": 89,
+      "hp": 276,
+      "gold": 940,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 36,
+      "attempt": 1,
+      "act": 3,
+      "won": true,
+      "ended": true,
+      "seconds": 213.5,
+      "kills": 1984,
+      "level": 94,
+      "hp": 276,
+      "gold": 1181,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 37,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 139.3,
+      "kills": 586,
+      "level": 95,
+      "hp": 276,
+      "gold": 620,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 38,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 162.7,
+      "kills": 835,
+      "level": 97,
+      "hp": 276,
+      "gold": 656,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 39,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 178.9,
+      "kills": 1201,
+      "level": 98,
+      "hp": 271.8,
+      "gold": 828,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 40,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 155,
+      "kills": 832,
+      "level": 99,
+      "hp": 275,
+      "gold": 586,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 41,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 172.9,
+      "kills": 1107,
+      "level": 100,
+      "hp": 276,
+      "gold": 653,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 42,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 194.1,
+      "kills": 1452,
+      "level": 102,
+      "hp": 275.3,
+      "gold": 986,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 43,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 168.9,
+      "kills": 1136,
+      "level": 103,
+      "hp": 274.4,
+      "gold": 791,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 44,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 201,
+      "kills": 1589,
+      "level": 103,
+      "hp": 267.5,
+      "gold": 888,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 45,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 210.8,
+      "kills": 1850,
+      "level": 101,
+      "hp": 275.1,
+      "gold": 1027,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 46,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 183.5,
+      "kills": 1413,
+      "level": 102,
+      "hp": 276,
+      "gold": 768,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 47,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 203.5,
+      "kills": 1681,
+      "level": 101,
+      "hp": 276,
+      "gold": 933,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    },
+    {
+      "node": 48,
+      "attempt": 1,
+      "act": 4,
+      "won": true,
+      "ended": true,
+      "seconds": 224.3,
+      "kills": 2268,
+      "level": 105,
+      "hp": 275.2,
+      "gold": 1301,
+      "weapons": [
+        [
+          0,
+          8,
+          true
+        ],
+        [
+          1,
+          8,
+          true
+        ],
+        [
+          2,
+          8,
+          false
+        ],
+        [
+          5,
+          8,
+          false
+        ],
+        [
+          8,
+          8,
+          false
+        ],
+        [
+          4,
+          8,
+          true
+        ]
+      ]
+    }
+  ]
+}
