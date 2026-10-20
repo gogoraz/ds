@@ -1,0 +1,35 @@
+name: Validate game
+on:
+  push:
+    branches: [main, "work/**"]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  mechanics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Rebuild standalone page
+        run: |
+          python3 scripts/build.py
+          git diff --exit-code -- index.html
+      - name: Syntax and campaign mechanics
+        run: |
+          node --check src/engine-v34.js
+          node --check src/act1-v6.js
+          node --check src/campaign-v7.js
+          node tests/campaign-v7.cjs
+          node tests/act1-v6.cjs
+          node tests/offline.cjs
+      - name: Simulate campaign combat and terrain
+        run: node tests/playtest.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: combat-simulation
+          path: docs/playtest-v7-results.json

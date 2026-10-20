@@ -1,10 +1,10 @@
 'use strict';
 // Heuristic player, real combat and terrain, no rendering. Not a human win-rate estimate.
-const {boot}=require('./act1-v6.cjs');
+const {boot}=require('./harness-v7.cjs');
 const results=[];const campaign=boot();
-for(let zone=0;zone<4;zone++){
+for(let zone=0;zone<48;zone++){
  const{g}=campaign;for(let i=0;i<zone;i++)g.save.campaign.cleared[i]=true;g.stage=zone;const cp=g.save.campaign.checkpoint;g.startRun(cp?.stage===zone?cp:null);let frames=0;
- while(!g.run.ended&&g.run.time<g.LEVELS[zone].duration+100&&frames++<15000){
+ while(!g.run.ended&&g.run.time<g.NODES[zone].duration+100&&frames++<18000){
   if(g.state==='BOSS_INTRO'||g.state==='PAUSE')g.resumeRun();
   if(g.state==='CHEST'){g.uiAction('closeChest');continue;}
   if(g.state==='LEVELUP'){let pick=0,score=-999;g.choices.forEach((o,i)=>{let s=0;if(o.type==='w'){const own=g.run.weapons.find(w=>w.id===o.id);s=own?9-own.level:15;if([1,2,4,6,8,10].includes(o.id))s+=4;}else if(o.type==='p'){s=[0,4,6,7,8,10].includes(o.id)?12:4;if(g.run.player.hp<g.run.player.maxHp*.5&&o.id===8)s=25;}if(s>score){score=s;pick=i;}});g.chooseUpgrade(pick);continue;}
@@ -18,7 +18,7 @@ for(let zone=0;zone<4;zone++){
   if(target&&d<180)g.activeSkill(0);if(target&&d<150)g.activeSkill(1);if(p.hp<p.maxHp*.7)g.activeSkill(2);
   g.frameStep();g.updateRun(1/30);
  }
- results.push({zone:zone+1,won:!!g.run.victory,ended:g.run.ended,seconds:+g.run.time.toFixed(1),kills:g.run.kills,level:g.run.level,hp:+g.run.player.hp.toFixed(1),gold:g.run.awardedGold??g.earnedGold(g.run),weapons:g.run.weapons.map(w=>[w.id,w.level,w.evolved])});
+ results.push({level:zone+1,act:Math.floor(zone/12)+1,won:!!g.run.victory,ended:g.run.ended,seconds:+g.run.time.toFixed(1),kills:g.run.kills,level:g.run.level,hp:+g.run.player.hp.toFixed(1),gold:g.run.awardedGold??g.earnedGold(g.run),weapons:g.run.weapons.map(w=>[w.id,w.level,w.evolved])});
  console.log('PLAYTEST '+JSON.stringify(results[results.length-1]));if(g.run.victory){g.buyItem('steel');g.buyItem('coat');if(g.save.gold>=40)g.uiAction('buy_health');}
 }
-require('node:fs').writeFileSync('docs/playtest-results.json',JSON.stringify({scenario:'Heuristic player, sequential carry build, purchases after victories, actual terrain, 30 Hz simulation. Not human win rates or device FPS.',results},null,2)+'\n');
+require('node:fs').writeFileSync('docs/playtest-v7-results.json',JSON.stringify({scenario:'Heuristic player, sequential carry build, purchases after victories, actual terrain, 30 Hz simulation. Not human win rates or device FPS.',results},null,2)+'\n');
