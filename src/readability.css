@@ -1,0 +1,16 @@
+@font-face{font-family:HellboundUI;src:url('./assets/fonts/ui.woff2') format('woff2');font-display:swap;font-weight:100 900}
+@font-face{font-family:HellboundHeading;src:url('./assets/fonts/heading.woff2') format('woff2');font-display:swap}
+:root{font-size:16px;--text:#e4e4df;--muted:#c2c7c8;--panel:#131a20;--border:#a89466}
+html,body{font-family:HellboundUI,system-ui,sans-serif;color:var(--text);line-height:1.45;font-variant-numeric:tabular-nums}
+.panel{color:var(--text);background:linear-gradient(135deg,#252e34,#11171d 70%);padding:1.4rem;line-height:1.5}
+h1,h2,h3{font-family:HellboundHeading,Georgia,serif;line-height:1.2;letter-spacing:.03em}
+h1{font-size:2.5rem}.panel>h2{font-size:1.65rem}.v6-card h3,.shop-row h3{font-size:1.2rem}
+p,.subtitle{font-size:1rem;line-height:1.5}.small,.v6-card p,.v6-card small,.v6-footer,.v6-stat,.v7-stats span,.setting,.v6-wallet,.card p,.card .flavor,.card .rarity,.eyebrow,.credits{font-family:HellboundUI,system-ui,sans-serif;font-size:max(.85rem,13px);line-height:1.5;color:var(--muted)}
+button,.primary,.shop-row button,.setting select,select,input,textarea{font-family:HellboundUI,system-ui,sans-serif;font-size:1rem;line-height:1.4}
+button,.primary,.back,select{min-height:2.8rem;white-space:normal;overflow-wrap:anywhere}.setting{flex-wrap:wrap;gap:.65rem}.setting select{max-width:100%}
+.v6-notice{font:1rem/1.5 HellboundUI,system-ui;color:var(--text)}.v6-card{background:#162028;border-color:#837c64}.v6-card p{max-width:70ch}
+html.readable h1,html.readable h2,html.readable h3{font-family:HellboundUI,system-ui,sans-serif}
+.danger{color:#ffaaa0}.v6-grid,.v6-layout,.v6-side{min-width:0}.v6-layout>*{min-width:0}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #a9d8ff;outline-offset:3px}
+@media(max-width:600px){.panel{padding:1rem}.v6-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}.v6-layout,.v6-side{grid-template-columns:1fr}.skill-list{grid-template-columns:1fr}.v6-wallet{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}

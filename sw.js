@@ -1,7 +1,7 @@
 'use strict';
 // Relative URLs preserve GitHub Pages project paths such as /ds/.
-const CACHE='hellbound-ashen-gate-v8.0.0-alpha1';
-const SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./assets/terrain.webp','./assets/heroes.webp','./assets/monsters.webp','./assets/props.webp'];
+const CACHE='hellbound-ashen-gate-v8.0.0-alpha2';
+const SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./assets/terrain.webp','./assets/heroes.webp','./assets/monsters.webp','./assets/props.webp','./assets/fonts/ui.woff2','./assets/fonts/heading.woff2'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('hellbound-ashen-gate-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
 self.addEventListener('fetch',event=>{const req=event.request,url=new URL(req.url);if(req.method!=='GET'||url.origin!==self.location.origin)return;

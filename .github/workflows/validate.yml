@@ -28,6 +28,7 @@ jobs:
           node tests/offline.cjs
           node tests/scroll.cjs
           node tests/i18n.cjs
+          node tests/readability.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4
