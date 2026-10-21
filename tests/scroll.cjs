@@ -21,7 +21,7 @@ function node(panel,id,y,disabled=false){
 function boot(){
  let panel=null;const ui={classList:{add(){},remove(){}},style:{},querySelector:()=>panel,
  set innerHTML(html){panel=html?new Panel():null;}};
- const context={ui,screenName:'',state:'GEAR',document:{activeElement:null}};
+ const context={ui,screenName:'',state:'GEAR',I18n:{localize:x=>x,language:'en'},document:{activeElement:null,documentElement:{}}};
  vm.createContext(context);vm.runInContext(source.slice(start,end),context);
  const engine=fs.readFileSync('src/engine-v34.js','utf8');
  vm.runInContext(engine.match(/^function hideUI\(\).*$/m)[0],context);
