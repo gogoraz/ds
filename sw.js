@@ -1,6 +1,6 @@
 'use strict';
 // Relative URLs preserve GitHub Pages project paths such as /ds/.
-const CACHE='hellbound-ashen-gate-v7.0.0';
+const CACHE='hellbound-ashen-gate-v7.0.1';
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./assets/terrain.webp','./assets/heroes.webp','./assets/monsters.webp','./assets/props.webp'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('hellbound-ashen-gate-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});

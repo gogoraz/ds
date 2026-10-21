@@ -1,4 +1,6 @@
-# Hellbound Survivors · v7.0
+# Hellbound Survivors · v7.0.1
+
+Първа поправка от плана за v8: общият интерфейс запазва скрола при действия, при връщане от подекран и при обновяване на таланти/реликви. При промяна на списък позицията се възстановява спрямо оставащ елемент. Форматът на записа остава v7. Това **не е завършеното обновление v8**. [Технически отчет и следващи фази](docs/v8-implementation-review.md) · [Проверки за v8](docs/QA-v8.md).
 
 [Играй в браузъра](https://gogoraz.github.io/ds/)
 
@@ -203,6 +205,7 @@ python3 -m http.server 8000
 node --check src/campaign-v7.js
 node tests/campaign-v7.cjs
 node tests/offline.cjs
+node tests/scroll.cjs
 node tests/playtest.cjs
 # Архивна регресия:
 node tests/act1-v6.cjs
