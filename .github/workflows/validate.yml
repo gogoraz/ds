@@ -32,6 +32,7 @@ jobs:
           node tests/save-v8.cjs
           node tests/input.cjs
           node tests/music.cjs
+          node tests/rift.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4

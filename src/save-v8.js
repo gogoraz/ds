@@ -25,8 +25,10 @@ normalizeSave=function(input){if(!input||typeof input!=='object')throw Error('In
  s.settings.bindings={};for(const[k,v]of Object.entries(input.settings?.bindings||{}))if(/^(up|down|left|right|spell0|spell1|spell2|dash|pause)$/.test(k)&&typeof v==='string'&&v.length<25)s.settings.bindings[k]=v;
  const byId=new Map((Array.isArray(input.gear)?input.gear:[]).filter(x=>x&&typeof x.id==='string').map(x=>[x.id,x]));for(const it of s.gear){const src=byId.get(it.id)||{};it.rank=is8?safeInt(src.rank,10):it.rank;it.broken=!!src.broken;it.locked=!!src.locked;it.forgeGold=safeInt(src.forgeGold,1e8);it.forgeDust=safeInt(src.forgeDust,1e6);if(it.broken&&s.worn[it.slot]===it.id)s.worn[it.slot]=null;}
  if(!is8){s.stats.kills=s.kills;s.stats.wins=s.campaign.wins.reduce((a,b)=>a+b,0);s.stats.goldEarned=s.economy.earned;s.stats.goldSpent=s.economy.spent;}
+ if(input.pendingRun&&is8)s.pendingRun={gold:safeInt(input.pendingRun.gold),mode:input.pendingRun.mode==='rift'?'rift':'campaign',tier:clamp(safeInt(input.pendingRun.tier),1,50)};
  return s;
 };
+const recoverBefore8=recoverRun;recoverRun=function(s){const pending=s.pendingRun;if(pending?.mode==='rift')s.riftMaterials.keystones[Math.max(0,pending.tier-2)]++;recoverBefore8(s);};
 let migrationPending=null;
 loadSave=function(){for(const key of [V8_KEY,V8_KEY+'_backup',CAMPAIGN_KEY,CAMPAIGN_KEY+'_backup','hellbound_act1_v6','hellbound_act1_v6_backup','hellbound_mobile_ch1_v4','hellbound_save_v1']){try{const raw=localStorage.getItem(key);if(!raw)continue;const s=normalizeSave(JSON.parse(raw));recoverRun(s);if(key!==V8_KEY&&key!==V8_KEY+'_backup')migrationPending={key,raw};return s;}catch(_){}}return defaults();};
 save=loadSave();
