@@ -1,7 +1,7 @@
 'use strict';
 // Heuristic player, real combat and terrain, no rendering. Not a human win-rate estimate.
 const {boot}=require('./harness-v7.cjs');
-const results=[];const campaign=boot();
+const results=[];const campaign=boot({}, {automated:true});
 for(let zone=0;zone<48;zone++){
  for(let attempt=1;attempt<=3;attempt++){
  const{g}=campaign;for(let i=0;i<zone;i++)g.save.campaign.cleared[i]=true;g.stage=zone;const cp=g.save.campaign.checkpoint;g.startRun(cp?.stage===zone?cp:null);let frames=0;
