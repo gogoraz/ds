@@ -43,3 +43,7 @@ This is a testing preview. Physical iOS/Android/controller checks, the complete 
 ### Input corrections (T05)
 
 Hold left mouse to follow the cursor; release, blur or hide the page to stop. Right click casts spell 1; all spell/dash HUD buttons are clickable. Stick sensitivity is adjustable from 0.5 to 1.5. Town shortcuts: F/I inventory, R rifts, M missions, H heroes, T talents, B bestiary, G trader, C campaign.
+
+### T06 — boss music
+
+Boss music now has three family-specific motifs and rhythms. Below 66% health it adds bass; below 33% it adds a choir layer. Notes remain in the zone mode and share the existing bounded voice budget.
