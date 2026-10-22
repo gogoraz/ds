@@ -14,3 +14,4 @@ html.readable h1,html.readable h2,html.readable h3{font-family:HellboundUI,syste
 button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #a9d8ff;outline-offset:3px}
 @media(max-width:600px){.panel{padding:1rem}.v6-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}.v6-layout,.v6-side{grid-template-columns:1fr}.skill-list{grid-template-columns:1fr}.v6-wallet{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+.v8-preview,.v8-banner{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:.35rem;background:linear-gradient(135deg,#273b47,#11171d);margin:0 0 .8rem}.v8-banner{max-height:18rem;object-position:center}.v6-card:has(.v8-preview){background:linear-gradient(135deg,#23323a,#10171d)}

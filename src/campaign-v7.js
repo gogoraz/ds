@@ -126,7 +126,7 @@ spawnEnemy=function(id=0,elite=false,x=null,y=null,boss=-1){if(!run)return null;
  if(x===null){const a=rand(0,TAU),distance=Math.hypot(CONFIG.W,CONFIG.H)*.53+65;x=run.player.x+Math.cos(a)*distance;y=run.player.y+Math.sin(a)*distance;}
  const e=spawnEnemyV1(id,elite,x,y,boss);if(!e)return null;const n=levelInfo(),depth=n.zoneId,t=run.tier||0;
  e.levelGuardian=boss>=0;e.colorAct=n.act;e.attackPose=0;e.drawAngle=0;
- if(boss<0&&id!==99){e.maxHp=ENEMIES[id].hp*(1+depth*.18+n.trial*.1)*(1+run.time/60*.12)*(elite?4.5:1)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.speed*=.92+Math.min(.18,depth*.012)+Math.min(.1,run.time/1200);e.damage*=1+depth*.025+n.trial*.03+t*.07;}
+ if(boss<0&&id!==99){e.maxHp=ENEMIES[id].hp*(1+depth*.18+n.trial*.1)*(1+run.time/60*.12)*(elite?4.5:1)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.speed*=.92+Math.min(.18,depth*.012)+Math.min(.1,run.time/1200);e.damage*=(1+depth*.025+n.trial*.03)*(1+.07*t);}
  if(boss>=0){e.maxHp=(720+depth*240+n.trial*210)*(1+.22*t)*run.player.curse;e.hp=e.maxHp;e.damage=(17+depth*.9+n.trial)*(1+.07*t);e.speed*=.8;e.sprite='boss'+boss;e.name=n.guardian;}
  Terrain.place(e,e.r);return e;};
 const deathV6=enemyDeath;
