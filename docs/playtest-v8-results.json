@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "b3c244b10b09dcb11a308853996ede25e72991fb662ed91683c17b373c4c5dde",
+  "sourceSha256": "d9834f65b9b5e3b2bd7c770aeb78fd113810b6e8c63fa8cf125795bfb2b4af34",
   "scenario": "Heuristic player, sequential carry after victory, up to three attempts per node, purchases after every settlement, actual terrain, 30 Hz. After three failures the harness alone unlocks the next node to exercise later content. Not human win rates or device FPS.",
   "results": [
     {

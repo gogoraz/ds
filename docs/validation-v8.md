@@ -22,7 +22,7 @@ The v6 suite is retained as an archived mechanics regression; current campaign s
 The combat report records this exact SHA-256 of the tested `index.html`:
 
 ```
-b3c244b10b09dcb11a308853996ede25e72991fb662ed91683c17b373c4c5dde
+d9834f65b9b5e3b2bd7c770aeb78fd113810b6e8c63fa8cf125795bfb2b4af34
 ```
 
 The report and final page hash were compared after the run. The historical v7 report is preserved separately. GitHub Actions is configured to rebuild, run syntax/the 17 suites, simulate the campaign and upload the two v8 reports. A local pass is not a claim that the remote workflow has completed.
@@ -36,3 +36,16 @@ The report and final page hash were compared after the run. The historical v7 re
 - Human balance and readability for rifts, seven bonus modes, hazards, new enemies and the economy; broader six-hero campaign play.
 
 These checks remain pending, not passed or silently skipped. See [v8-status.md](v8-status.md) for task-by-task scope. T13 discussion and the remaining optional T15 systems are outside this implementation.
+
+## Correction review — 22 October 2026
+
+All 17 suites and JavaScript syntax checks passed again after the corrections. The final campaign simulation won all 48 nodes in 48 attempts; its source hash matches the committed page above.
+
+- T05: held left-mouse movement follows the cursor and stops on release/blur/hidden tab; right mouse casts spell 1, HUD skills/dash remain clickable. Added saved stick sensitivity (0.5–1.5), keyboard adjustments on form controls and town shortcuts.
+- T06: three boss-family motifs/rhythms; bass below 66% health and choir below 33%, within the existing voice budget. Tests exercise the actual scheduler for all nine family/phase combinations.
+- T11: per-spell counters, damage-free and single-weapon contracts, persistent daily offers across unlock/reload, and weekly title/frame rewards with no duplicates.
+- T04/P10: optional one-hand touch layout on either side, tap-to-move, three spells, dash, stop and pause; persisted settings.
+
+`tests/browser-v8.cjs` adds dependency-free real Chrome checks in GitHub Actions: 40 viewport/font captures, EN/pseudo overflow, actual pointer input, scroll, save reload and offline artwork. Screenshots and the JSON report are uploaded as `v8-browser-evidence`. This container's browser attempts failed because restricted OS sockets terminated Chromium; a local browser pass is not claimed. The remote job must be checked separately.
+
+Physical phones/controllers, human combat balance and long listening/LUFS remain pending. T13 and unselected T15 design proposals remain outside this correction scope. PR must stay Draft and must not merge into main without explicit user confirmation.

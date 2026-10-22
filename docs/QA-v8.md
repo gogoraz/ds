@@ -108,3 +108,12 @@
 `tests/ui-v8.cjs` проверява навигацията към новите екрани, липса на undefined/NaN/BG при EN, филтри, най-добър предмет, защита на заключени/екипирани/начални предмети от масово разглобяване, реалния preview → confirm → restore път на backup, escaping на импортни имена/ID и данните в damage bars. Допълнителните настройки/отчети вече се пазят в имитирания DOM, а не изчезват в несвързани тестови панели.
 
 Реализирани са P1/P10/P12/P13 и настройки за батерия/козметика. T13 и останалите предложения са извън този преглед. T04 остава без завършено визуално приемане, защото няма работещ браузър за екранни снимки.
+
+## Correction regression — 22 October 2026
+
+- Automated PASS: held-mouse release and cursor following, right-click spell, saved sensitivity and one-hand settings, one-hand stop/spell/pause, town shortcuts.
+- Automated PASS: three distinct boss-family motifs and the actual scheduler's nine family/phase combinations.
+- Automated PASS: spell/conditional contract counters, stable offers through unlock/reload, weekly cosmetic rewards and 60-date rotation.
+- Automated PASS: all 17 suites and fresh 48/48 campaign simulation on the corrected page.
+- Browser evidence: run `node tests/browser-v8.cjs` with Node 22+ and `CHROME_PATH` pointing to Chrome. GitHub Actions uploads 40 main screenshots plus one-hand/offline captures and a JSON report. Local execution is blocked by restricted OS sockets; inspect remote results separately.
+- Still pending: physical iOS/Android/controller acceptance, human economy/combat balance and long listening/LUFS. PR remains Draft, with no merge authorization.

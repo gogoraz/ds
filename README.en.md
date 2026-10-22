@@ -55,3 +55,7 @@ Daily contracts include a specific spell slot, damage-free wins and single-weapo
 ### T04/P10 — one-hand controls
 
 One-hand touch mode supports left/right placement. Tap the arena to move towards a point without holding. A separate control cluster provides three spells, dash, stop and pause. Opening a menu clears movement. Physical phone usability remains a separate acceptance check.
+
+### Review validation
+
+The 22 October 2026 correction review passed all 17 automated suites and a fresh 48/48 campaign simulation. A separate GitHub Actions job checks real Chrome, 40 viewport/font screenshots, localization, input and offline assets. Physical devices, listening and human balance remain acceptance work. T13 and unselected T15 proposals are outside this implementation.

@@ -11,3 +11,7 @@ T04 proposals carried into the authorized implementation: permanent wallet/navig
 Implemented in the preview: shared wallet and scrolling town tabs; item search, slot/rarity filters, comparisons with numeric +/−, locks, best-per-slot and reviewed bulk dismantling; controller focus/adjustment; damage breakdowns; title/frame selection; a first-run guide; three-backup preview/confirmation/restore; reduced shake, high-contrast markers, held spell keys and 30 FPS. The DOM test harness now retains the actual panel content so appended settings and reports are included in localization checks.
 
 This does not change the pending screenshot/device status above. No claim of a completed browser pixel audit is made.
+
+## Correction review — 22 October 2026
+
+Added left/right one-hand controls, held-mouse behavior and controller sensitivity. A dependency-free Chrome/CDP job now captures the requested 40 phone/desktop font-size screenshots, checks pseudo-localization overflow, real pointer events and offline artwork. Local Chromium downloads succeeded but execution failed with OS socket restrictions. Inspect the `v8-browser-evidence` Actions artifact before marking rendered acceptance complete. No physical iOS/controller or listening checks are represented by that job.

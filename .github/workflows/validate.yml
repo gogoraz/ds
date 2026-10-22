@@ -47,3 +47,23 @@ jobs:
           path: |
             docs/playtest-v8-results.json
             docs/playtest-v8-rifts.json
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Real browser layout, input and offline checks
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tests/browser-v8.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v8-browser-evidence
+          path: |
+            docs/browser-v8-results.json
+            docs/browser-captures/
