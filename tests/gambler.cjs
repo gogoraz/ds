@@ -1,0 +1,6 @@
+'use strict';const assert=require('node:assert/strict'),{boot}=require('./harness-v7.cjs');const{g}=boot();let seed=977;const rng=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)/2**32),counts=[0,0,0,0];for(let i=0;i<100000;i++)counts[g.Gambler.baseRoll(rng)]++;for(let i=0;i<4;i++)assert.ok(Math.abs(counts[i]/1e5-g.GAMBLER_ODDS[i])<.01);
+const worst={sinceRare:9,sinceLegendary:0};assert.equal(g.Gambler.roll(worst,()=>0),2);worst.sinceLegendary=39;assert.equal(g.Gambler.roll(worst,()=>0),3);
+g.save.riftMaterials.shards=10000;for(let i=0;i<40;i++){const it=g.Gambler.buy('head',()=>0);assert.ok(it);if((i+1)%10===0)assert.ok(it.rarity>=2);if(i===39)assert.equal(it.rarity,3);}assert.equal(g.save.gambler.sinceLegendary,0);
+const before=g.save.riftMaterials.shards;g.save.gear=Array.from({length:80},(_,i)=>({id:String(i)}));assert.equal(g.Gambler.buy('head'),false);assert.equal(g.save.riftMaterials.shards,before);
+const b=boot().g;b.save.riftMaterials.shards=100;b.save.settings.autoDismantle=2;const item=b.Gambler.buy('head',()=>0);assert.equal(item.rarity,0);assert.equal(b.save.gear.length,2);assert.equal(b.save.shards,1);
+console.log('PASS 100,000 base odds, 10/40 purchase guarantees, payment/capacity guards and automatic dismantling');
