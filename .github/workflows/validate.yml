@@ -37,6 +37,7 @@ jobs:
           node tests/gambler.cjs
           node tests/art.cjs
           node tests/missions.cjs
+          node tests/enemies.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4
