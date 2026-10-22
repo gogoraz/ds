@@ -28,6 +28,13 @@ async function main(){
  check('reference artwork decoded',await evaluate('REFERENCE_ART.errors.length===0'),await evaluate('REFERENCE_ART.errors'));
  const artPixels=await evaluate(`(()=>{const out=[];for(const id of ['hero0','hero1','hero2','hero3','hero4','hero5',...Object.keys(MONSTER_CELL)]){const s=rasterBase(id,2),p=s.getContext('2d').getImageData(0,0,s.width,s.height).data;let solid=0,clear=0;for(let i=3;i<p.length;i+=4){if(p[i]>32)solid++;if(p[i]===0)clear++;}out.push({id,solid,clear,corner:p[3]});}return out})()`);
  check('all uploaded actors have isolated silhouettes',artPixels.every(x=>x.solid>200&&x.clear>1000&&x.corner===0),artPixels);
+ check('walkable floor atlas loaded',await evaluate("RASTER.images.terrain.src.endsWith('/assets/reference/walkable-floors-v10.webp')"));
+ await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+ for(let act=0;act<4;act++){
+  const passage=await evaluate(`(()=>{resize();save.settings.lang='bg';save.settings.reducedMotion=true;save.tutorialSeen=true;sandboxMode=true;selectedStage=${act*12};startRun();run.player.invuln=0;run.cam.x=run.player.x;run.cam.y=run.player.y;spawnEnemy(0,false,run.player.x+120,run.player.y+90);state='PAUSE';hideUI();render();return{horizontal:!Terrain.trace(-640,0,640,0,46),vertical:!Terrain.trace(0,-640,0,640,46),props:props.count}})()`);
+  check('act '+(act+1)+' has broad connected passages',passage.horizontal&&passage.vertical&&passage.props===49,passage);
+  await screenshot('terrain-act-'+(act+1)+'-mobile');await evaluate('finishRun(false);sandboxMode=false;selectedStage=0');
+ }
  await evaluate("save.settings.reducedMotion=true;save.tutorialSeen=true;save.settings.lang='bg';menu()");
  for(const [device,width,height]of [['mobile',390,844],['desktop',1440,1000]]){
   await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:device==='mobile'});await evaluate('resize()');

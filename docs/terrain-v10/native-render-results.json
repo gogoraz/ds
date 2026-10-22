@@ -1,0 +1,150 @@
+{
+  "renderer": "@napi-rs/canvas (Skia), real source JPEGs, no browser",
+  "actors": [
+    {
+      "id": "hero0",
+      "solid": 4526,
+      "clear": 7681,
+      "corner": 0
+    },
+    {
+      "id": "hero1",
+      "solid": 2835,
+      "clear": 9343,
+      "corner": 0
+    },
+    {
+      "id": "hero2",
+      "solid": 4125,
+      "clear": 8047,
+      "corner": 0
+    },
+    {
+      "id": "hero3",
+      "solid": 4194,
+      "clear": 7990,
+      "corner": 0
+    },
+    {
+      "id": "hero4",
+      "solid": 4502,
+      "clear": 7657,
+      "corner": 0
+    },
+    {
+      "id": "hero5",
+      "solid": 3075,
+      "clear": 9074,
+      "corner": 0
+    },
+    {
+      "id": "imp",
+      "solid": 1424,
+      "clear": 10815,
+      "corner": 0
+    },
+    {
+      "id": "bat",
+      "solid": 1440,
+      "clear": 10816,
+      "corner": 0
+    },
+    {
+      "id": "zombie",
+      "solid": 2932,
+      "clear": 9252,
+      "corner": 0
+    },
+    {
+      "id": "skeleton",
+      "solid": 2645,
+      "clear": 9582,
+      "corner": 0
+    },
+    {
+      "id": "archer",
+      "solid": 2414,
+      "clear": 9777,
+      "corner": 0
+    },
+    {
+      "id": "ghoul",
+      "solid": 3135,
+      "clear": 9047,
+      "corner": 0
+    },
+    {
+      "id": "cultist",
+      "solid": 2750,
+      "clear": 9478,
+      "corner": 0
+    },
+    {
+      "id": "revenant",
+      "solid": 3797,
+      "clear": 8408,
+      "corner": 0
+    },
+    {
+      "id": "leech",
+      "solid": 1261,
+      "clear": 11008,
+      "corner": 0
+    },
+    {
+      "id": "wraith",
+      "solid": 4139,
+      "clear": 8006,
+      "corner": 0
+    },
+    {
+      "id": "demon",
+      "solid": 4095,
+      "clear": 8115,
+      "corner": 0
+    },
+    {
+      "id": "gravewarden",
+      "solid": 3995,
+      "clear": 8195,
+      "corner": 0
+    },
+    {
+      "id": "plague",
+      "solid": 4009,
+      "clear": 8238,
+      "corner": 0
+    },
+    {
+      "id": "shade",
+      "solid": 3007,
+      "clear": 9158,
+      "corner": 0
+    },
+    {
+      "id": "boss0",
+      "solid": 6011,
+      "clear": 6186,
+      "corner": 0
+    },
+    {
+      "id": "boss1",
+      "solid": 3995,
+      "clear": 8206,
+      "corner": 0
+    },
+    {
+      "id": "boss2",
+      "solid": 5503,
+      "clear": 6697,
+      "corner": 0
+    },
+    {
+      "id": "reaper",
+      "solid": 4291,
+      "clear": 7901,
+      "corner": 0
+    }
+  ],
+  "scenes": 4
+}
