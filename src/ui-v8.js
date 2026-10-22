@@ -41,7 +41,7 @@ const OneHand={element:null,signature:'',
   this.element.className='one-hand '+save.settings.oneHandSide;
   const values=[0,1,2].map(slot=>Math.ceil(run.skillCDs[slot]||0)),signature=I18n.language+':'+values.join(',');
   if(signature===this.signature)return;this.signature=signature;
-  this.element.innerHTML='<span>'+t('ui.oneHandHint')+'</span>'+[0,1,2].map(slot=>'<button data-one-hand="spell'+slot+'" aria-label="'+t('input.spell'+slot)+'">'+t('input.spell'+slot)+(values[slot]?' · '+values[slot]:'')+'</button>').join('')+'<button data-one-hand="dash">'+t('input.dash')+'</button><button data-one-hand="stop">'+t('ui.stop')+'</button><button data-one-hand="pause">'+T('pause')+'</button>';
+  this.element.innerHTML='<span>'+t('ui.oneHandHint')+'</span>'+[0,1,2].map(slot=>'<button data-one-hand="spell'+slot+'" aria-label="'+t('input.spell'+slot)+'">'+t('input.spell'+slot)+(values[slot]?' · '+values[slot]:'')+'</button>').join('')+'<button data-one-hand="dash">'+t('ui.dashShort')+'</button><button data-one-hand="stop">'+t('ui.stop')+'</button><button data-one-hand="pause">'+t('input.pause')+'</button>';
  }
 };
 const renderBeforeOneHand=render;render=function(){renderBeforeOneHand();OneHand.render();};
