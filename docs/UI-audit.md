@@ -7,3 +7,7 @@ The environment has no working Chromium executable. Downloading Chromium returne
 Pending: screenshots of town, heroes, inventory, campaign and settings at S/M/L/XL on mobile and desktop (40 captures), pseudo-localization overflow checks, and physical iOS inertial scrolling.
 
 T04 proposals carried into the authorized implementation: permanent wallet/navigation, item comparisons and inventory filters/locks, clear risk/reward previews, explicit controller focus and end-of-run weapon damage. Actual screenshots and visual acceptance remain open until a rendered browser/device session is available.
+
+Implemented in the preview: shared wallet and scrolling town tabs; item search, slot/rarity filters, comparisons with numeric +/−, locks, best-per-slot and reviewed bulk dismantling; controller focus/adjustment; damage breakdowns; title/frame selection; a first-run guide; three-backup preview/confirmation/restore; reduced shake, high-contrast markers, held spell keys and 30 FPS. The DOM test harness now retains the actual panel content so appended settings and reports are included in localization checks.
+
+This does not change the pending screenshot/device status above. No claim of a completed browser pixel audit is made.

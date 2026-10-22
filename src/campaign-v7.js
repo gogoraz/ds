@@ -138,7 +138,7 @@ earnedGold=function(r,victory=false){if(r.sandbox)return 0;const n=NODES[r.stage
 const ACT_POOLS=[[0,1,2,3,4,5,6],[2,4,8,3,5,9,12],[8,7,11,2,6,10,13],[9,12,13,5,6,10,11]];
 waveDirector=function(dt){const r=run,n=levelInfo();r.spawn-=dt;const pressure=clamp(r.time/n.duration,0,1),pool=ACT_POOLS[n.act],length=Math.min(pool.length,2+n.sub+n.trial+Math.floor(r.time/30));
  if(r.spawn<=0){r.spawn=(r.guardianSpawned?2.8:.95-pressure*.42-n.act*.035)/Math.sqrt(r.player.curse);const count=r.guardianSpawned?1:Math.min(6,1+Math.floor(r.time/55)+Math.floor(n.act/2));for(let i=0;i<count;i++)spawnEnemy(pool[Math.floor(Math.random()*length)]);}
- const hazard=Math.floor(r.time/(30-n.trial*3));if(hazard>(r.hazardMark||0)&&r.time>20&&!r.guardianSpawned){r.hazardMark=hazard;const p=r.player;effect('hostileWarn',p.x+rand(-30,30),p.y+rand(-30,30),55+n.act*8,['#a08a76','#d5b16c','#82a06e','#d68157'][n.act],1.6,12+n.act*2+n.trial,1);}
+ const hazardProfile=ZONE_HAZARDS[n.zoneId],hazard=Math.floor(r.time/Math.max(22,hazardProfile.period-n.trial*2));if(hazard>(r.hazardMark||0)&&r.time>20&&!r.guardianSpawned){r.hazardMark=hazard;emitZoneHazard(hazardProfile);}
  const mark=Math.floor(r.time/50);if(mark>r.eliteMarks&&r.time<n.duration-10){r.eliteMarks=mark;spawnEnemy(pool[Math.min(pool.length-1,2+n.sub+n.trial)],true);}
  if(r.time>=n.duration&&!r.guardianSpawned){r.guardianSpawned=true;if(!spawnEnemy(0,false,null,null,n.boss))r.guardianSpawned=false;}
  if(r.time>=n.duration+180&&!r.reaper){r.reaper=true;spawnEnemy(99);toast(legacy("legacy.613"));}

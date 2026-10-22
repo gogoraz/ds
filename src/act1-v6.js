@@ -74,12 +74,12 @@ function render(){ctx.setTransform(dpr*viewScale,0,0,dpr*viewScale,0,0);ctx.imag
 function wallet(){return `${legacy("legacy.475")}${save.gold} · ✧ ${save.soulstones} · ◇ ${save.shards}</span></div>`;}
 // Shared by every screen, including future v8 screens. Memory is session-only.
 const scrollMemory=Object.create(null);
-function scrollKey(el){return el?.dataset?.id||el?.dataset?.action||el?.id||null;}
-function scrollElements(container){return Array.from(container?.querySelectorAll?.('[data-id], [data-action], [id]')||[]);}
+function scrollKey(el){return el?.dataset?.id||el?.dataset?.action||(el?.dataset?.setting?'setting:'+el.dataset.setting:null)||(el?.dataset?.inventory?'inventory:'+el.dataset.inventory:null)||el?.id||null;}
+function scrollElements(container){return Array.from(container?.querySelectorAll?.('[data-id], [data-action], [data-setting], [data-inventory], [id]')||[]);}
 function captureScroll(container){
  if(!container)return null;
  const top=container.getBoundingClientRect().top,anchors=[];
- for(const el of scrollElements(container)){const rect=el.getBoundingClientRect(),id=scrollKey(el);if(id&&rect.bottom>top&&rect.height>0)anchors.push({id,offset:rect.top-top});}
+ for(const el of scrollElements(container)){if(el.closest?.('.v8-tabs,.v8-wallet'))continue;const rect=el.getBoundingClientRect(),id=scrollKey(el);if(id&&rect.bottom>top&&rect.height>0)anchors.push({id,offset:rect.top-top});}
  return {top:container.scrollTop||0,anchors,focus:container.contains?.(document.activeElement)?scrollKey(document.activeElement):null};
 }
 function restoreScroll(container,snapshot){
@@ -97,7 +97,7 @@ function withScrollPreserved(container,renderFn){
 }
 function rememberScreenScroll(){if(screenName){const snapshot=captureScroll(ui.querySelector('.panel'));if(snapshot)scrollMemory[screenName]=snapshot;}}
 function showUI(html,name=''){
- html=I18n.localize(html);document.documentElement.lang=I18n.language;
+ html=I18n.localizeMarkup(html);document.documentElement.lang=I18n.language;
  rememberScreenScroll();const old=ui.querySelector('.panel'),same=screenName===name;
  screenName=name;ui.classList.add('show');
  // Keep the actual scroll container alive for in-screen actions.
