@@ -7,7 +7,7 @@ const MUSIC_THEMES=[
  ['zone12',48,'aeolian',96,4,'ash',.18],['zone13',50,'phrygian',112,4,'ember',.23],['zone14',43,'phrygian',118,4,'anvil',.20],['zone15',47,'locrian',90,4,'choir',.14]
 ].map(([id,root,mode,bpm,meter,instrument,brightness])=>({id,root,mode,bpm,meter,instrument,brightness}));
 const Music={theme:null,desired:'hub',intensity:0,voices:0,limit:12,next:0,beat:0,timer:null,bus:null,rng:null,paused:false,
- play(id){const next=MUSIC_THEMES.find(t=>t.id===id)||MUSIC_THEMES[0];this.desired=next.id;if(this.theme?.id===next.id)return;this.theme=next;this.rng=seeded(hash(next.root,next.bpm,next.id.length));this.beat=0;this.next=Sound.ac?Sound.ac.currentTime+.04:0;if(Sound.ac){const old=this.bus;this.bus=Sound.ac.createGain();this.bus.gain.setValueAtTime(.0001,Sound.ac.currentTime);this.bus.gain.linearRampToValueAtTime(1,Sound.ac.currentTime+1.8);this.bus.connect(Sound.music);if(old){old.gain.cancelScheduledValues(Sound.ac.currentTime);old.gain.setTargetAtTime(.0001,Sound.ac.currentTime,.5);setTimeout(()=>old.disconnect(),3500);}}},
+ play(id){const next=MUSIC_THEMES.find(t=>t.id===id)||MUSIC_THEMES[0];this.desired=next.id;if(this.theme?.id===next.id)return;this.theme=next;this.rng=seeded(hash(next.root,next.bpm,next.id.length));this.beat=0;this.audibleStart=Sound.ac?.currentTime||0;this.next=Sound.ac?Sound.ac.currentTime+.04:0;if(Sound.ac){const old=this.bus;this.bus=Sound.ac.createGain();this.bus.gain.setValueAtTime(.0001,Sound.ac.currentTime);this.bus.gain.linearRampToValueAtTime(1,Sound.ac.currentTime+1.8);this.bus.connect(Sound.music);if(old){old.gain.cancelScheduledValues(Sound.ac.currentTime);old.gain.setTargetAtTime(.0001,Sound.ac.currentTime,.5);setTimeout(()=>old.disconnect(),3500);}}},
  setIntensity(level){this.intensity=clamp(Math.floor(level),0,2);},setVolume(value){if(Sound.music)Sound.music.gain.value=clamp(value,0,1);},
  stop(){if(this.timer&&typeof clearInterval!=='undefined')clearInterval(this.timer);this.timer=null;if(this.bus&&Sound.ac)this.bus.gain.setTargetAtTime(.0001,Sound.ac.currentTime,.15);this.theme=null;},
  duck(on){if(!Sound.music||!Sound.ac)return;Sound.music.gain.setTargetAtTime(save.settings.music*(on?.22:1),Sound.ac.currentTime,.15);},
@@ -24,7 +24,7 @@ const Music={theme:null,desired:'hub',intensity:0,voices:0,limit:12,next:0,beat:
  if(rift&&!low&&b%4===1)this.note(this.midi(step,2),when,.18,'square',.008+Math.min(50,run.rift.tier)*.00015);
  this.next+=period;}
  },
- tick(){if(!Sound.ac)return;this.setIntensity(run&&state==='RUN'?(run.bosses>0||enemies.items.slice(0,enemies.count).some(e=>e.elite)?2:enemies.count>=30||run.time>levelInfo().duration*.5?1:0):0);this.duck(['PAUSE','LEVELUP','CHEST','BOSS_INTRO'].includes(state));this.schedule();},
+ tick(){if(!Sound.ac)return;if(this.theme?.id.startsWith('zone')&&Sound.ac.state==='running'&&!save.settings.mute&&save.settings.music>0&&Sound.ac.currentTime-this.audibleStart>=3)Stats.unique('zonesMusicHeard',Number(this.theme.id.slice(4)));this.setIntensity(run&&state==='RUN'?(run.bosses>0||enemies.items.slice(0,enemies.count).some(e=>e.elite)?2:enemies.count>=30||run.time>levelInfo().duration*.5?1:0):0);this.duck(['PAUSE','LEVELUP','CHEST','BOSS_INTRO'].includes(state));this.schedule();},
  motif(won){if(!Sound.ac)return;const time=Sound.ac.currentTime;for(const[i,step]of (won?[0,2,4,7]:[4,2,1,0]).entries())this.note(this.midi(step,won?1:0),time+i*.28,1.3,'triangle',.045);}
 };
 Sound.unlock=function(){try{if(!this.ac){const A=window.AudioContext||window.webkitAudioContext;if(!A)return;const ac=this.ac=new A();this.master=ac.createGain();this.music=ac.createGain();this.sfx=ac.createGain();this.music.connect(this.master);this.sfx.connect(this.master);const compressor=ac.createDynamicsCompressor();compressor.threshold.value=-20;compressor.ratio.value=5;this.master.connect(compressor);compressor.connect(ac.destination);
@@ -33,5 +33,5 @@ Sound.unlock=function(){try{if(!this.ac){const A=window.AudioContext||window.web
  this.ac.resume().catch(()=>{});this.volumes();}catch(_){this.ac=null;}};
 Sound.tick=()=>Music.tick();
 const menuBeforeMusic=menu;menu=function(){menuBeforeMusic();Music.play('hub');};
-const startBeforeMusic=startRun;startRun=function(carry=null){startBeforeMusic(carry);if(run&&!run.ended){Music.play('zone'+run.zone);Stats.unique('zonesMusicHeard',run.zone);}};
+const startBeforeMusic=startRun;startRun=function(carry=null){startBeforeMusic(carry);if(run&&!run.ended){Music.play('zone'+run.zone);}};
 const endBeforeMusic=finishRun;finishRun=function(victory){if(!run||run.ended)return;endBeforeMusic(victory);Music.motif(victory);};
