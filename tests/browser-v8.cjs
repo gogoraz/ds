@@ -24,6 +24,10 @@ async function main(){
  chrome.stderr.on('data',x=>{stderr=(stderr+x).slice(-12000);});chrome.stdio[4].on('data',receive);chrome.on('error',error=>{for(const job of pending.values()){clearTimeout(job.timer);job.reject(error);}pending.clear();});chrome.on('exit',()=>{browserExited=true;for(const job of pending.values()){clearTimeout(job.timer);job.reject(Error('Chrome exited: '+stderr));}pending.clear();});
  const browser=await send('Browser.getVersion',{},null),{targetId}=await send('Target.createTarget',{url:'about:blank'},null);session=(await send('Target.attachToTarget',{targetId,flatten:true},null)).sessionId;
  await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Page.navigate',{url});await waitFor("typeof OneHand!=='undefined'&&typeof state!=='undefined'");
+ await waitFor('RASTER.ready');
+ check('reference artwork decoded',await evaluate('REFERENCE_ART.errors.length===0'),await evaluate('REFERENCE_ART.errors'));
+ const artPixels=await evaluate(`(()=>{const out=[];for(const id of ['hero0','hero1','hero2','hero3','hero4','hero5',...Object.keys(MONSTER_CELL)]){const s=rasterBase(id,2),p=s.getContext('2d').getImageData(0,0,s.width,s.height).data;let solid=0,clear=0;for(let i=3;i<p.length;i+=4){if(p[i]>32)solid++;if(p[i]===0)clear++;}out.push({id,solid,clear,corner:p[3]});}return out})()`);
+ check('all uploaded actors have isolated silhouettes',artPixels.every(x=>x.solid>200&&x.clear>1000&&x.corner===0),artPixels);
  await evaluate("save.settings.reducedMotion=true;save.tutorialSeen=true;save.settings.lang='bg';menu()");
  for(const [device,width,height]of [['mobile',390,844],['desktop',1440,1000]]){
   await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:device==='mobile'});await evaluate('resize()');
