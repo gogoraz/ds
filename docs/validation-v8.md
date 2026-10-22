@@ -50,4 +50,6 @@ All 17 suites and JavaScript syntax checks passed again after the corrections. T
 
 Physical phones/controllers, human combat balance and long listening/LUFS remain pending. T13 and unselected T15 design proposals remain outside this correction scope. PR must stay Draft and must not merge into main without explicit user confirmation.
 
-UI-only follow-up: real Chrome found and prompted a fix for EN/pseudo achievements overflow at XL. The committed combat report remains evidence for the pre-reflow correction build (`d9834f65b9b5e3b2bd7c770aeb78fd113810b6e8c63fa8cf125795bfb2b4af34`). The reflow-only page hash is `44db211aaa2e7394bb6317a4d02b42b814eefb6ba4509c1cb540c5cc14c2b452`; fresh GitHub Actions reports validate this final page separately.
+UI-only follow-up: real Chrome found and prompted a fix for EN/pseudo achievements overflow at XL. The committed combat report remains evidence for the pre-reflow correction build (`d9834f65b9b5e3b2bd7c770aeb78fd113810b6e8c63fa8cf125795bfb2b4af34`). The first reflow-only page hash was `44db211aaa2e7394bb6317a4d02b42b814eefb6ba4509c1cb540c5cc14c2b452`; fresh GitHub Actions reports validate this final page separately.
+
+The mobile act-tab layout was also adjusted after inspecting the captured views. Final-page campaign evidence is the latest GitHub Actions combat artifact; the committed JSON remains the explicitly dated pre-reflow run. Browser reload checks now await actual document load events.
