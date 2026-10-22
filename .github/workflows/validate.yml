@@ -33,6 +33,7 @@ jobs:
           node tests/input.cjs
           node tests/music.cjs
           node tests/rift.cjs
+          node tests/forge.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4
