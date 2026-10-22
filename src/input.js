@@ -1,11 +1,11 @@
 /* One input router, independent from combat simulation. Standard gamepad mapping. */
 const DEFAULT_BINDINGS={up:'w',down:'s',left:'a',right:'d',spell0:'1',spell1:'2',spell2:'3',dash:'Shift',pause:'Escape'};
-const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,target:null,cursor:null,leftHeld:false,repeat:{},
+const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,target:null,cursor:null,leftHeld:false,oneHandTarget:null,repeat:{},
  binding(action){return save.settings.bindings?.[action]||DEFAULT_BINDINGS[action];},
  axis(x,y){const length=Math.hypot(x,y),dead=save.settings.deadzone??.2;if(length<=dead)return{x:0,y:0};const factor=Math.min(1,(length-dead)/(1-dead)*(save.settings.sensitivity??1))/length;return{x:x*factor,y:y*factor};},
  use(device){this.last=device;Stats.input(device);},
  pointer(e){
-  if(e.pointerType!=='mouse'){this.use('touch');return false;}
+  if(e.pointerType!=='mouse'){this.use('touch');if(save.settings.oneHand&&state==='RUN'){e.preventDefault();const q=point(e);this.oneHandTarget={x:run.player.x+q.x-CONFIG.W/2,y:run.player.y+q.y-CONFIG.H/2};return true;}return false;}
   this.use('mouse');if(!save.settings.mouseMode)return false;
   e.preventDefault();Sound.unlock();const q=point(e);this.cursor=q;
   if(e.button===2){activeSkill(0);return true;}
@@ -51,7 +51,7 @@ const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,targ
  const panel=ui.querySelector('.panel');if(panel)panel.scrollTop+=(pad.axes[3]||0)*500*dt+(pressed[7]?350*dt:0)-(pressed[6]?350*dt:0);if(edge(2))this.secondary('sell-');if(edge(3))this.secondary('lock-');}
  this.buttons=pressed;this.device=pad.id;
  }else{this.buttons={};gx=gy=0;}
- if(state==='RUN'){let x=gx,y=gy;const k=this.held;x+=(k[this.binding('right')]||k.ArrowRight?1:0)-(k[this.binding('left')]||k.ArrowLeft?1:0);y+=(k[this.binding('down')]||k.ArrowDown?1:0)-(k[this.binding('up')]||k.ArrowUp?1:0);
+ if(state==='RUN'){if(this.last==='touch'&&save.settings.oneHand){const target=this.oneHandTarget,dx=target?target.x-run.player.x:0,dy=target?target.y-run.player.y:0,length=Math.hypot(dx,dy);Input.x=length>10?dx/length:0;Input.y=length>10?dy/length:0;if(length<=10)this.oneHandTarget=null;}let x=gx,y=gy;const k=this.held;x+=(k[this.binding('right')]||k.ArrowRight?1:0)-(k[this.binding('left')]||k.ArrowLeft?1:0);y+=(k[this.binding('down')]||k.ArrowDown?1:0)-(k[this.binding('up')]||k.ArrowUp?1:0);
  if(this.leftHeld&&this.cursor&&this.last==='mouse'&&save.settings.mouseMode){this.target={x:run.player.x+this.cursor.x-CONFIG.W/2,y:run.player.y+this.cursor.y-CONFIG.H/2};const dx=this.target.x-run.player.x,dy=this.target.y-run.player.y,d=Math.hypot(dx,dy);if(d>10){x=dx/d;y=dy/d;}else{x=0;y=0;}}
  Input.x=this.last==='touch'?Input.x:x;Input.y=this.last==='touch'?Input.y:y;Input.keys={};}
  },
@@ -66,6 +66,6 @@ canvas.addEventListener('pointermove',e=>InputRouter.move(e));
 window.addEventListener('blur',()=>{InputRouter.held={};InputRouter.release();});
 for(const name of ['gamepadconnected','gamepaddisconnected'])window.addEventListener(name,()=>{InputRouter.buttons={};InputRouter.release();Input.reset();if(state==='RUN')showPause();toast(t(name==='gamepadconnected'?'input.connected':'input.disconnected'));});
 const updateBeforeInput=updatePlayer;updatePlayer=function(dt){InputRouter.poll(dt);updateBeforeInput(dt);};
-const renderBeforeInput=render;render=function(){if(state!=='RUN')InputRouter.poll(.016);renderBeforeInput();};
+const renderBeforeInput=render;render=function(){if(state!=='RUN'){InputRouter.oneHandTarget=null;InputRouter.poll(.016);}renderBeforeInput();};
 const settingsBeforeInput=settingsScreen;settingsScreen=function(back='menu'){const prior=screenName==='settings'?ui.querySelector('.panel'):null;withScrollPreserved(prior,()=>{settingsBeforeInput(back);const p=ui.querySelector('.panel');p.innerHTML+='<h3>'+t('input.title')+'</h3><p>'+t('input.explain')+'</p><div class="v6-grid">'+Object.keys(DEFAULT_BINDINGS).map(k=>'<div class="v6-card"><label>'+t('input.'+k)+'</label>'+button(InputRouter.pending===k?t('input.press'):InputRouter.binding(k),'bind-'+k)+'</div>').join('')+'</div><div class="setting"><label>'+t('input.mouse')+'</label><input type="checkbox" data-setting="mouseMode" '+(save.settings.mouseMode?'checked':'')+'></div><div class="setting"><label>'+t('input.deadzone')+'</label><input type="range" min="0.05" max="0.5" step="0.05" value="'+save.settings.deadzone+'" data-setting="deadzone"></div><div class="setting"><label>'+t('input.sensitivity')+'</label><input type="range" min="0.5" max="1.5" step="0.1" value="'+save.settings.sensitivity+'" data-setting="sensitivity"></div><div class="setting"><label>'+t('input.rumble')+'</label><input type="checkbox" data-setting="rumble" '+(save.settings.rumble?'checked':'')+'></div>'+button(t('input.reset'),'bindings-reset');if(!prior)restoreScroll(p,scrollMemory.settings);return p;});};
 const actionBeforeInput=uiAction;uiAction=function(action){if(action.startsWith('bind-')){const name=action.slice(5);if(Object.hasOwn(DEFAULT_BINDINGS,name)){InputRouter.pending=name;settingsScreen(settingsReturn);}return;}if(action==='bindings-reset'){save.settings.bindings={};persist();settingsScreen(settingsReturn);return;}actionBeforeInput(action);};

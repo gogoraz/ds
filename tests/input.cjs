@@ -20,3 +20,6 @@ mg.finishRun(false);mr.key({key:'r',preventDefault(){}},true);assert.equal(mg.st
 console.log('PASS held mouse release/cursor, right-click spell, controller sensitivity bounds/persistence and town shortcuts');
 
 mg.settingsScreen();assert.ok(mouse.els.get('ui').innerHTML.includes('data-setting="sensitivity"'));
+const one=boot(),og=one.g;og.startRun();og.state='RUN';og.save.settings.oneHand=true;const op={pointerType:'touch',clientX:200,clientY:100,preventDefault(){}};assert.equal(og.InputRouter.pointer(op),true);assert.ok(og.InputRouter.oneHandTarget);og.InputRouter.poll();assert.ok(Math.hypot(og.Input.x,og.Input.y)>0);og.OneHand.action('stop');assert.equal(og.InputRouter.oneHandTarget,null);assert.equal(og.Input.x,0);assert.equal(og.Input.y,0);
+og.run.skillCDs[1]=0;og.run.player.mana=og.run.player.maxMana;og.OneHand.action('spell1');assert.ok(og.run.skillCDs[1]>0);og.OneHand.action('pause');assert.equal(og.state,'PAUSE');og.settingsScreen();assert.ok(one.els.get('ui').innerHTML.includes('data-setting="oneHandSide"'));assert.equal(og.normalizeSave({...og.save,settings:{...og.save.settings,oneHand:true,oneHandSide:'left'}}).settings.oneHandSide,'left');
+console.log('PASS one-hand tap-to-move, stop, spell, pause, side selector and saved settings');

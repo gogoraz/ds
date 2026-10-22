@@ -51,3 +51,7 @@ Boss music now has three family-specific motifs and rhythms. Below 66% health it
 ### T11 — contract variety
 
 Daily contracts include a specific spell slot, damage-free wins and single-weapon wins. The three offers are saved per date, so unlocking rifts cannot replace current contracts. Weekly rewards also unlock a persistent title and frame without duplicates.
+
+### T04/P10 — one-hand controls
+
+One-hand touch mode supports left/right placement. Tap the arena to move towards a point without holding. A separate control cluster provides three spells, dash, stop and pause. Opening a menu clears movement. Physical phone usability remains a separate acceptance check.
