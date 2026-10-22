@@ -15,3 +15,5 @@ This does not change the pending screenshot/device status above. No claim of a c
 ## Correction review — 22 October 2026
 
 Added left/right one-hand controls, held-mouse behavior and controller sensitivity. A dependency-free Chrome/CDP job now captures the requested 40 phone/desktop font-size screenshots, checks pseudo-localization overflow, real pointer events and offline artwork. Local Chromium downloads succeeded but execution failed with OS socket restrictions. Inspect the `v8-browser-evidence` Actions artifact before marking rendered acceptance complete. No physical iOS/controller or listening checks are represented by that job.
+
+The first real Chrome run captured all 40 primary views and found horizontal overflow on the achievements heading in EN pseudo-localization at XL on a 390px viewport. Added text reflow and bounded settings children, preserving visible content; minimum menu target height is now 44px even at S. The CI rerun determines whether all remaining input/offline checks pass.

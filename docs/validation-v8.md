@@ -39,7 +39,7 @@ These checks remain pending, not passed or silently skipped. See [v8-status.md](
 
 ## Correction review — 22 October 2026
 
-All 17 suites and JavaScript syntax checks passed again after the corrections. The final campaign simulation won all 48 nodes in 48 attempts; its source hash matches the committed page above.
+All 17 suites and JavaScript syntax checks passed again after the corrections. The final campaign simulation won all 48 nodes in 48 attempts; its source hash matches the tested pre-reflow page recorded above.
 
 - T05: held left-mouse movement follows the cursor and stops on release/blur/hidden tab; right mouse casts spell 1, HUD skills/dash remain clickable. Added saved stick sensitivity (0.5–1.5), keyboard adjustments on form controls and town shortcuts.
 - T06: three boss-family motifs/rhythms; bass below 66% health and choir below 33%, within the existing voice budget. Tests exercise the actual scheduler for all nine family/phase combinations.
@@ -49,3 +49,5 @@ All 17 suites and JavaScript syntax checks passed again after the corrections. T
 `tests/browser-v8.cjs` adds dependency-free real Chrome checks in GitHub Actions: 40 viewport/font captures, EN/pseudo overflow, actual pointer input, scroll, save reload and offline artwork. Screenshots and the JSON report are uploaded as `v8-browser-evidence`. This container's browser attempts failed because restricted OS sockets terminated Chromium; a local browser pass is not claimed. The remote job must be checked separately.
 
 Physical phones/controllers, human combat balance and long listening/LUFS remain pending. T13 and unselected T15 design proposals remain outside this correction scope. PR must stay Draft and must not merge into main without explicit user confirmation.
+
+UI-only follow-up: real Chrome found and prompted a fix for EN/pseudo achievements overflow at XL. The committed combat report remains evidence for the pre-reflow correction build (`d9834f65b9b5e3b2bd7c770aeb78fd113810b6e8c63fa8cf125795bfb2b4af34`). The reflow-only page hash is `44db211aaa2e7394bb6317a4d02b42b814eefb6ba4509c1cb540c5cc14c2b452`; fresh GitHub Actions reports validate this final page separately.

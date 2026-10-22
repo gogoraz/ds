@@ -44,6 +44,10 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 #one-hand-controls[hidden]{display:none}
 .one-hand{position:absolute;bottom:max(20px,var(--sab));display:grid;grid-template-columns:repeat(2,92px);gap:8px;z-index:4;padding:8px;background:#10171df2;border:1px solid #a89466;border-radius:10px;touch-action:manipulation}
 .one-hand.right{right:12px}.one-hand.left{left:12px}.one-hand span{grid-column:1/-1;font-size:14px;text-align:center;max-width:192px}.one-hand button{min-height:58px;padding:8px;font-size:15px}
+
+/* Allow long localized headings to reflow instead of widening the panel. */
+.panel{overflow-wrap:anywhere}.setting>*{min-width:0;max-width:100%}
+button,.primary,.back,select{min-height:max(44px,2.8rem)}
 </style></head><body><div id="stage"><canvas id="game" aria-label="Hellbound Survivors"></canvas><div id="ui"></div><div id="toast" role="status"></div></div><script>'use strict';
 // Central dictionaries. Legacy text stays stable in saved item names; rendering resolves it.
 const I18N_ROWS=[

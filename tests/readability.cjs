@@ -5,3 +5,5 @@ for(const font of ['ui','heading']){const bytes=fs.readFileSync('assets/fonts/'+
 function lum(hex){const c=hex.match(/\w\w/g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return c[0]*.2126+c[1]*.7152+c[2]*.0722;}
 for(const fg of ['e4e4df','c2c7c8','ffaaa0'])for(const bg of ['252e34','11171d','162028']){const l=[lum(fg),lum(bg)].sort((a,b)=>b-a);assert.ok((l[0]+.05)/(l[1]+.05)>=4.5);}
 console.log('PASS four text sizes, readable option, two offline WOFF2 assets and nine AA contrast pairs');
+
+const css=fs.readFileSync('src/readability.css','utf8');assert.ok(css.includes('.panel{overflow-wrap:anywhere}'));assert.ok(css.includes('min-height:max(44px,2.8rem)'));
