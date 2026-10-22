@@ -8,7 +8,7 @@ permissions:
 jobs:
   mechanics:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,16 +20,50 @@ jobs:
           git diff --exit-code -- index.html
       - name: Syntax and campaign mechanics
         run: |
-          node --check src/engine-v34.js
-          node --check src/act1-v6.js
-          node --check src/campaign-v7.js
+          for source in src/*.js; do node --check "$source"; done
           node tests/campaign-v7.cjs
           node tests/act1-v6.cjs
           node tests/offline.cjs
+          node tests/scroll.cjs
+          node tests/i18n.cjs
+          node tests/readability.cjs
+          node tests/save-v8.cjs
+          node tests/input.cjs
+          node tests/music.cjs
+          node tests/rift.cjs
+          node tests/forge.cjs
+          node tests/gambler.cjs
+          node tests/art.cjs
+          node tests/missions.cjs
+          node tests/enemies.cjs
+          node tests/achievements.cjs
+          node tests/ui-v8.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: combat-simulation
-          path: docs/playtest-v7-results.json
+          path: |
+            docs/playtest-v8-results.json
+            docs/playtest-v8-rifts.json
+
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Real browser layout, input and offline checks
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tests/browser-v8.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v8-browser-evidence
+          path: |
+            docs/browser-v8-results.json
+            docs/browser-captures/

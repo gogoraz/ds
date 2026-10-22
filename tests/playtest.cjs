@@ -1,7 +1,8 @@
 'use strict';
 // Heuristic player, real combat and terrain, no rendering. Not a human win-rate estimate.
 const {boot}=require('./harness-v7.cjs');
-const results=[];const campaign=boot();
+const buildHash=require('node:crypto').createHash('sha256').update(require('node:fs').readFileSync('index.html')).digest('hex');
+const results=[];const campaign=boot({}, {automated:true});
 for(let zone=0;zone<48;zone++){
  for(let attempt=1;attempt<=3;attempt++){
  const{g}=campaign;for(let i=0;i<zone;i++)g.save.campaign.cleared[i]=true;g.stage=zone;const cp=g.save.campaign.checkpoint;g.startRun(cp?.stage===zone?cp:null);let frames=0;
@@ -25,4 +26,4 @@ for(let zone=0;zone<48;zone++){
  if(g.run.victory)break;
  }
 }
-require('node:fs').writeFileSync('docs/playtest-v7-results.json',JSON.stringify({scenario:'Heuristic player, sequential carry after victory, up to three attempts per node, purchases after every settlement, actual terrain, 30 Hz. After three failures the harness alone unlocks the next node to exercise later content. Not human win rates or device FPS.',results},null,2)+'\n');
+require('node:fs').writeFileSync('docs/playtest-v8-results.json',JSON.stringify({sourceSha256:buildHash,scenario:'Heuristic player, sequential carry after victory, up to three attempts per node, purchases after every settlement, actual terrain, 30 Hz. After three failures the harness alone unlocks the next node to exercise later content. Not human win rates or device FPS.',results},null,2)+'\n');

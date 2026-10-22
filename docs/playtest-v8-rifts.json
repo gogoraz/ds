@@ -1,0 +1,554 @@
+{
+  "type": "Automated mechanics/settlement integration; not human or heuristic balance measurement",
+  "tiers": [
+    {
+      "tier": 1,
+      "guardianHp": 720,
+      "awardedShards": 60,
+      "nextKey": 3,
+      "affixes": [],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 2,
+      "guardianHp": 806.4000000000001,
+      "awardedShards": 66,
+      "nextKey": 4,
+      "affixes": [],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 3,
+      "guardianHp": 903.1680000000001,
+      "awardedShards": 72,
+      "nextKey": 5,
+      "affixes": [],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 4,
+      "guardianHp": 1011.5481600000003,
+      "awardedShards": 79,
+      "nextKey": 6,
+      "affixes": [],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 5,
+      "guardianHp": 1132.9339392000004,
+      "awardedShards": 101,
+      "nextKey": 7,
+      "affixes": [
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 6,
+      "guardianHp": 1268.8860119040005,
+      "awardedShards": 111,
+      "nextKey": 8,
+      "affixes": [
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 7,
+      "guardianHp": 1421.1523333324808,
+      "awardedShards": 122,
+      "nextKey": 9,
+      "affixes": [
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 8,
+      "guardianHp": 1591.6906133323787,
+      "awardedShards": 134,
+      "nextKey": 10,
+      "affixes": [
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 9,
+      "guardianHp": 1782.6934869322642,
+      "awardedShards": 147,
+      "nextKey": 11,
+      "affixes": [
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 10,
+      "guardianHp": 1996.6167053641361,
+      "awardedShards": 162,
+      "nextKey": 12,
+      "affixes": [
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 11,
+      "guardianHp": 2236.210710007833,
+      "awardedShards": 178,
+      "nextKey": 13,
+      "affixes": [
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 12,
+      "guardianHp": 2504.555995208773,
+      "awardedShards": 196,
+      "nextKey": 14,
+      "affixes": [
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 13,
+      "guardianHp": 2805.102714633826,
+      "awardedShards": 216,
+      "nextKey": 15,
+      "affixes": [
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 14,
+      "guardianHp": 3141.7150403898854,
+      "awardedShards": 238,
+      "nextKey": 16,
+      "affixes": [
+        "fire"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 15,
+      "guardianHp": 3518.7208452366717,
+      "awardedShards": 296,
+      "nextKey": 17,
+      "affixes": [
+        "elites",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 16,
+      "guardianHp": 3940.967346665073,
+      "awardedShards": 325,
+      "nextKey": 18,
+      "affixes": [
+        "elites",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 17,
+      "guardianHp": 4413.883428264882,
+      "awardedShards": 358,
+      "nextKey": 19,
+      "affixes": [
+        "mana",
+        "fire"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 18,
+      "guardianHp": 4943.549439656668,
+      "awardedShards": 394,
+      "nextKey": 20,
+      "affixes": [
+        "elites",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 19,
+      "guardianHp": 5536.775372415469,
+      "awardedShards": 433,
+      "nextKey": 21,
+      "affixes": [
+        "fire",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 20,
+      "guardianHp": 6201.188417105326,
+      "awardedShards": 477,
+      "nextKey": 22,
+      "affixes": [
+        "frost",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 21,
+      "guardianHp": 6945.331027157966,
+      "awardedShards": 524,
+      "nextKey": 23,
+      "affixes": [
+        "frost",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 22,
+      "guardianHp": 7778.770750416923,
+      "awardedShards": 577,
+      "nextKey": 24,
+      "affixes": [
+        "fire",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 23,
+      "guardianHp": 8712.223240466954,
+      "awardedShards": 634,
+      "nextKey": 25,
+      "affixes": [
+        "fire",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 24,
+      "guardianHp": 9757.690029322988,
+      "awardedShards": 698,
+      "nextKey": 26,
+      "affixes": [
+        "fast",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 25,
+      "guardianHp": 10928.612832841749,
+      "awardedShards": 768,
+      "nextKey": 27,
+      "affixes": [
+        "frost",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 26,
+      "guardianHp": 12240.04637278276,
+      "awardedShards": 845,
+      "nextKey": 28,
+      "affixes": [
+        "wells",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 27,
+      "guardianHp": 13708.851937516692,
+      "awardedShards": 929,
+      "nextKey": 29,
+      "affixes": [
+        "frost",
+        "fire"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 28,
+      "guardianHp": 15353.914170018697,
+      "awardedShards": 1022,
+      "nextKey": 30,
+      "affixes": [
+        "mana",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 29,
+      "guardianHp": 17196.383870420945,
+      "awardedShards": 1124,
+      "nextKey": 31,
+      "affixes": [
+        "mana",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 30,
+      "guardianHp": 19259.949934871456,
+      "awardedShards": 1380,
+      "nextKey": 32,
+      "affixes": [
+        "mana",
+        "wells",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 31,
+      "guardianHp": 21571.143927056033,
+      "awardedShards": 1518,
+      "nextKey": 33,
+      "affixes": [
+        "mana",
+        "elites",
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 32,
+      "guardianHp": 24159.681198302762,
+      "awardedShards": 1669,
+      "nextKey": 34,
+      "affixes": [
+        "mana",
+        "fast",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 33,
+      "guardianHp": 27058.842942099094,
+      "awardedShards": 1836,
+      "nextKey": 35,
+      "affixes": [
+        "wells",
+        "fire",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 34,
+      "guardianHp": 30305.90409515099,
+      "awardedShards": 2020,
+      "nextKey": 36,
+      "affixes": [
+        "fast",
+        "wells",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 35,
+      "guardianHp": 33942.612586569114,
+      "awardedShards": 2222,
+      "nextKey": 37,
+      "affixes": [
+        "fast",
+        "mana",
+        "fire"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 36,
+      "guardianHp": 38015.72609695741,
+      "awardedShards": 2444,
+      "nextKey": 38,
+      "affixes": [
+        "wells",
+        "fire",
+        "elites"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 37,
+      "guardianHp": 42577.6132285923,
+      "awardedShards": 2689,
+      "nextKey": 39,
+      "affixes": [
+        "fire",
+        "elites",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 38,
+      "guardianHp": 47686.92681602338,
+      "awardedShards": 2958,
+      "nextKey": 40,
+      "affixes": [
+        "frost",
+        "elites",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 39,
+      "guardianHp": 53409.35803394619,
+      "awardedShards": 3254,
+      "nextKey": 41,
+      "affixes": [
+        "frost",
+        "fire",
+        "mana"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 40,
+      "guardianHp": 59818.48099801974,
+      "awardedShards": 3579,
+      "nextKey": 42,
+      "affixes": [
+        "wells",
+        "fast",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 41,
+      "guardianHp": 66996.69871778211,
+      "awardedShards": 3937,
+      "nextKey": 43,
+      "affixes": [
+        "fire",
+        "frost",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 42,
+      "guardianHp": 75036.30256391598,
+      "awardedShards": 4331,
+      "nextKey": 44,
+      "affixes": [
+        "fire",
+        "mana",
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 43,
+      "guardianHp": 84040.6588715859,
+      "awardedShards": 4764,
+      "nextKey": 45,
+      "affixes": [
+        "elites",
+        "fast",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 44,
+      "guardianHp": 94125.53793617623,
+      "awardedShards": 5240,
+      "nextKey": 46,
+      "affixes": [
+        "elites",
+        "wells",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 45,
+      "guardianHp": 105420.60248851738,
+      "awardedShards": 5764,
+      "nextKey": 47,
+      "affixes": [
+        "frost",
+        "wells",
+        "fast"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 46,
+      "guardianHp": 118071.07478713947,
+      "awardedShards": 6341,
+      "nextKey": 48,
+      "affixes": [
+        "elites",
+        "fast",
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 47,
+      "guardianHp": 132239.60376159623,
+      "awardedShards": 6975,
+      "nextKey": 49,
+      "affixes": [
+        "mana",
+        "fast",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 48,
+      "guardianHp": 148108.3562129878,
+      "awardedShards": 7673,
+      "nextKey": 50,
+      "affixes": [
+        "fire",
+        "elites",
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 49,
+      "guardianHp": 165881.35895854633,
+      "awardedShards": 8440,
+      "nextKey": 50,
+      "affixes": [
+        "elites",
+        "mana",
+        "frost"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    },
+    {
+      "tier": 50,
+      "guardianHp": 185787.1220335719,
+      "awardedShards": 9284,
+      "nextKey": 50,
+      "affixes": [
+        "mana",
+        "frost",
+        "wells"
+      ],
+      "scenario": "Guardian/chest/XP/reward integration with deterministic lethal test hit; not a combat balance playtest"
+    }
+  ]
+}

@@ -1,2 +1,4 @@
 .openai/
 preview-dist/
+docs/browser-captures/
+docs/browser-v8-results.json
