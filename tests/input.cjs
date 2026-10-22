@@ -7,3 +7,16 @@ buttons[0].pressed=true;g.state='RUN';r.poll();assert.ok(g.run.skillCDs[0]>0);co
 buttons[9].pressed=true;r.poll();assert.equal(g.state,'PAUSE');
 g.save.settings.mouseMode=true;g.state='RUN';assert.equal(r.pointer({pointerType:'mouse',button:0,clientX:100,clientY:100,preventDefault(){}}),true);assert.ok(r.target);
 console.log('PASS radial dead zone, keyboard move/release, remapping, gamepad movement, edge-triggered casts/pause and mouse target');
+// Mouse movement must stop on release and follow the current cursor while held.
+const mouse=boot(),mg=mouse.g,mr=mg.InputRouter;mg.startRun();mg.state='RUN';mg.save.settings.mouseMode=true;
+const pointer={pointerType:'mouse',button:0,pointerId:3,clientX:110,clientY:130,preventDefault(){}};
+mr.pointer(pointer);mr.poll();assert.ok(Math.hypot(mg.Input.x,mg.Input.y)>0);mr.move({...pointer,clientX:0,clientY:50});assert.notEqual(mr.cursor.x,110);mr.release();mr.poll();assert.equal(mg.Input.x,0);assert.equal(mg.Input.y,0);
+mg.run.skillCDs[0]=0;mg.run.player.mana=mg.run.player.maxMana;mr.pointer({...pointer,button:2});assert.ok(mg.run.skillCDs[0]>0,'right click casts spell 1');assert.equal(mr.leftHeld,false);
+const moveButton=mg.SKILL_BUTTONS[1],stagePoint=mouse.els.get('stage').getBoundingClientRect();
+// Sensitivity preserves radial bounds and survives save normalization.
+mg.save.settings.sensitivity=.5;const gentle=mr.axis(.7,0).x;mg.save.settings.sensitivity=1.5;assert.ok(mr.axis(.7,0).x>gentle);assert.ok(Math.hypot(...Object.values(mr.axis(1,1)))<=1.00001);
+assert.equal(mg.normalizeSave({...mg.save,settings:{...mg.save.settings,sensitivity:99}}).settings.sensitivity,1.5);
+mg.finishRun(false);mr.key({key:'r',preventDefault(){}},true);assert.equal(mg.state,'RIFTS');
+console.log('PASS held mouse release/cursor, right-click spell, controller sensitivity bounds/persistence and town shortcuts');
+
+mg.settingsScreen();assert.ok(mouse.els.get('ui').innerHTML.includes('data-setting="sensitivity"'));

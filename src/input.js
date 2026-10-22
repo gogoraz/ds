@@ -1,15 +1,36 @@
 /* One input router, independent from combat simulation. Standard gamepad mapping. */
 const DEFAULT_BINDINGS={up:'w',down:'s',left:'a',right:'d',spell0:'1',spell1:'2',spell2:'3',dash:'Shift',pause:'Escape'};
-const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,target:null,repeat:{},
+const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,target:null,cursor:null,leftHeld:false,repeat:{},
  binding(action){return save.settings.bindings?.[action]||DEFAULT_BINDINGS[action];},
- axis(x,y){const length=Math.hypot(x,y),dead=save.settings.deadzone??.2;if(length<=dead)return{x:0,y:0};const factor=Math.min(1,(length-dead)/(1-dead))/length;return{x:x*factor,y:y*factor};},
+ axis(x,y){const length=Math.hypot(x,y),dead=save.settings.deadzone??.2;if(length<=dead)return{x:0,y:0};const factor=Math.min(1,(length-dead)/(1-dead)*(save.settings.sensitivity??1))/length;return{x:x*factor,y:y*factor};},
  use(device){this.last=device;Stats.input(device);},
- pointer(e){if(e.pointerType==='mouse'){this.use('mouse');if(save.settings.mouseMode){if(e.button===2){dash();return true;}const q=point(e);this.target={x:run.player.x+(q.x-CONFIG.W/2),y:run.player.y+(q.y-CONFIG.H/2)};e.preventDefault();return true;}}else this.use('touch');return false;},
+ pointer(e){
+  if(e.pointerType!=='mouse'){this.use('touch');return false;}
+  this.use('mouse');if(!save.settings.mouseMode)return false;
+  e.preventDefault();Sound.unlock();const q=point(e);this.cursor=q;
+  if(e.button===2){activeSkill(0);return true;}
+  if(e.button!==0)return true;
+  if(q.x>CONFIG.W-85-(CONFIG.safeRight||0)&&q.y<95+(CONFIG.safeTop||0)){showPause();return true;}
+  for(let i=0;i<3;i++){const b=SKILL_BUTTONS[i];if((q.x-b.x)**2+(q.y-b.y)**2<(b.r+10)**2){activeSkill(i);return true;}}
+  if((q.x-MOVE_BUTTON.x)**2+(q.y-MOVE_BUTTON.y)**2<(MOVE_BUTTON.r+10)**2){dash();return true;}
+  this.leftHeld=true;this.target={x:run.player.x+q.x-CONFIG.W/2,y:run.player.y+q.y-CONFIG.H/2};
+  try{canvas.setPointerCapture(e.pointerId);}catch(_){}return true;
+ },
+ release(){this.leftHeld=false;this.target=null;if(this.last==='mouse'){Input.x=0;Input.y=0;}},
+ move(e){if(e.pointerType!=='mouse'||state!=='RUN'||!save.settings.mouseMode)return;this.cursor=point(e);run.player.aim=Math.atan2(this.cursor.y-CONFIG.H/2,this.cursor.x-CONFIG.W/2);},
  key(e,down){const key=e.key.length===1?e.key.toLowerCase():e.key;if(this.pending&&down){if(key!=='Escape'){const bindings={...save.settings.bindings};for(const[action,value]of Object.entries({...DEFAULT_BINDINGS,...bindings}))if(value===key&&action!==this.pending)bindings[action]=this.binding(this.pending);bindings[this.pending]=key;save.settings.bindings=bindings;persist();}this.pending=null;settingsScreen(settingsReturn);e.preventDefault();return;}
- const tag=document.activeElement?.tagName;if(['INPUT','TEXTAREA','SELECT'].includes(tag))return;
- this.held[key]=down;this.use('keyboard');if(!down)return;
- if(key===this.binding('pause')||key==='p'){e.preventDefault();if(state==='RUN')showPause();else if(state==='PAUSE')resumeRun();return;}
- if(state!=='RUN'){if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(key)){this.navigate({ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[key]);e.preventDefault();}else if(key==='Enter'){this.activate();e.preventDefault();}else if(key==='Escape'){this.back();e.preventDefault();}return;}
+ const el=document.activeElement,tag=el?.tagName;
+ const editing=tag==='TEXTAREA'||tag==='INPUT'&&!['range','checkbox','button'].includes(el.type);
+ if(editing)return;
+ this.held[key]=down;if(down)this.use('keyboard');if(!down)return;
+ if(key===this.binding('pause')||key==='p'){e.preventDefault();this.release();if(state==='RUN')showPause();else if(state==='PAUSE')resumeRun();else this.back();return;}
+ if(state!=='RUN'){
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(key)){const dir={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[key];if(!(['left','right'].includes(dir)&&this.adjust(dir==='left'?-1:1)))this.navigate(dir);e.preventDefault();}
+  else if(key==='Enter'||key===' '){this.activate();e.preventDefault();}
+  else if(key==='Escape'){this.back();e.preventDefault();}
+  else if(!run||run.ended){const shortcut={f:'gear',i:'gear',r:'rifts',m:'missions',h:'heroes',t:'talents',b:'bestiary',g:'gambler',c:'campaign'}[key];if(shortcut){uiAction(shortcut);e.preventDefault();}}
+  return;
+ }
  for(const[action,value]of Object.entries({...DEFAULT_BINDINGS,...save.settings.bindings})){if(key!==value)continue;e.preventDefault();if(e.repeat)return;if(action.startsWith('spell'))activeSkill(Number(action.slice(5)));if(action==='dash')dash();}
  if(key===' '&&!e.repeat){activeSkill(0);e.preventDefault();}
  },
@@ -31,17 +52,20 @@ const InputRouter={last:'touch',held:{},buttons:{},device:null,pending:null,targ
  this.buttons=pressed;this.device=pad.id;
  }else{this.buttons={};gx=gy=0;}
  if(state==='RUN'){let x=gx,y=gy;const k=this.held;x+=(k[this.binding('right')]||k.ArrowRight?1:0)-(k[this.binding('left')]||k.ArrowLeft?1:0);y+=(k[this.binding('down')]||k.ArrowDown?1:0)-(k[this.binding('up')]||k.ArrowUp?1:0);
- if(this.target&&this.last==='mouse'&&save.settings.mouseMode){const dx=this.target.x-run.player.x,dy=this.target.y-run.player.y,d=Math.hypot(dx,dy);if(d>10){x=dx/d;y=dy/d;}else this.target=null;}
+ if(this.leftHeld&&this.cursor&&this.last==='mouse'&&save.settings.mouseMode){this.target={x:run.player.x+this.cursor.x-CONFIG.W/2,y:run.player.y+this.cursor.y-CONFIG.H/2};const dx=this.target.x-run.player.x,dy=this.target.y-run.player.y,d=Math.hypot(dx,dy);if(d>10){x=dx/d;y=dy/d;}else{x=0;y=0;}}
  Input.x=this.last==='touch'?Input.x:x;Input.y=this.last==='touch'?Input.y:y;Input.keys={};}
  },
  secondary(prefix){const card=document.activeElement?.closest?.('.v6-card'),button=Array.from(card?.querySelectorAll?.('button')||[]).find(x=>x.dataset.action?.startsWith(prefix)&&!x.disabled);button?.click();},
- hint(){if(this.last==='gamepad')return /playstation|dualsense|dualshock/i.test(this.device||'')?'✕ / □ / △ · ○':t('input.gamepad');return this.last==='keyboard'?[this.binding('spell0'),this.binding('spell1'),this.binding('spell2')].join(' / ')+' · '+this.binding('dash'):t('input.touch');},
+ hint(){if(this.last==='gamepad')return /playstation|dualsense|dualshock/i.test(this.device||'')?'✕ / □ / △ · ○':t('input.gamepad');if(this.last==='mouse')return t('input.mouseHint');return this.last==='keyboard'?[this.binding('spell0'),this.binding('spell1'),this.binding('spell2')].join(' / ')+' · '+this.binding('dash'):t('input.touch');},
  rumble(){if(!save.settings.rumble)return;const pad=Array.from(navigator.getGamepads?.()||[]).find(p=>p);try{pad?.vibrationActuator?.playEffect('dual-rumble',{duration:65,strongMagnitude:.25,weakMagnitude:.35})?.catch(()=>{});}catch(_){}}
 };
 window.addEventListener('keydown',e=>InputRouter.key(e,true));window.addEventListener('keyup',e=>InputRouter.key(e,false));
-window.addEventListener('blur',()=>{InputRouter.held={};InputRouter.target=null;});
-for(const name of ['gamepadconnected','gamepaddisconnected'])window.addEventListener(name,()=>{InputRouter.buttons={};Input.reset();if(state==='RUN')showPause();toast(t(name==='gamepadconnected'?'input.connected':'input.disconnected'));});
+for(const event of ['pointerup','pointercancel','lostpointercapture'])window.addEventListener(event,()=>InputRouter.release());
+document.addEventListener('visibilitychange',()=>{if(document.hidden)InputRouter.release();});
+canvas.addEventListener('pointermove',e=>InputRouter.move(e));
+window.addEventListener('blur',()=>{InputRouter.held={};InputRouter.release();});
+for(const name of ['gamepadconnected','gamepaddisconnected'])window.addEventListener(name,()=>{InputRouter.buttons={};InputRouter.release();Input.reset();if(state==='RUN')showPause();toast(t(name==='gamepadconnected'?'input.connected':'input.disconnected'));});
 const updateBeforeInput=updatePlayer;updatePlayer=function(dt){InputRouter.poll(dt);updateBeforeInput(dt);};
 const renderBeforeInput=render;render=function(){if(state!=='RUN')InputRouter.poll(.016);renderBeforeInput();};
-const settingsBeforeInput=settingsScreen;settingsScreen=function(back='menu'){const prior=screenName==='settings'?ui.querySelector('.panel'):null;withScrollPreserved(prior,()=>{settingsBeforeInput(back);const p=ui.querySelector('.panel');p.innerHTML+='<h3>'+t('input.title')+'</h3><p>'+t('input.explain')+'</p><div class="v6-grid">'+Object.keys(DEFAULT_BINDINGS).map(k=>'<div class="v6-card"><label>'+t('input.'+k)+'</label>'+button(InputRouter.pending===k?t('input.press'):InputRouter.binding(k),'bind-'+k)+'</div>').join('')+'</div><div class="setting"><label>'+t('input.mouse')+'</label><input type="checkbox" data-setting="mouseMode" '+(save.settings.mouseMode?'checked':'')+'></div><div class="setting"><label>'+t('input.deadzone')+'</label><input type="range" min="0.05" max="0.5" step="0.05" value="'+save.settings.deadzone+'" data-setting="deadzone"></div><div class="setting"><label>'+t('input.rumble')+'</label><input type="checkbox" data-setting="rumble" '+(save.settings.rumble?'checked':'')+'></div>'+button(t('input.reset'),'bindings-reset');if(!prior)restoreScroll(p,scrollMemory.settings);return p;});};
+const settingsBeforeInput=settingsScreen;settingsScreen=function(back='menu'){const prior=screenName==='settings'?ui.querySelector('.panel'):null;withScrollPreserved(prior,()=>{settingsBeforeInput(back);const p=ui.querySelector('.panel');p.innerHTML+='<h3>'+t('input.title')+'</h3><p>'+t('input.explain')+'</p><div class="v6-grid">'+Object.keys(DEFAULT_BINDINGS).map(k=>'<div class="v6-card"><label>'+t('input.'+k)+'</label>'+button(InputRouter.pending===k?t('input.press'):InputRouter.binding(k),'bind-'+k)+'</div>').join('')+'</div><div class="setting"><label>'+t('input.mouse')+'</label><input type="checkbox" data-setting="mouseMode" '+(save.settings.mouseMode?'checked':'')+'></div><div class="setting"><label>'+t('input.deadzone')+'</label><input type="range" min="0.05" max="0.5" step="0.05" value="'+save.settings.deadzone+'" data-setting="deadzone"></div><div class="setting"><label>'+t('input.sensitivity')+'</label><input type="range" min="0.5" max="1.5" step="0.1" value="'+save.settings.sensitivity+'" data-setting="sensitivity"></div><div class="setting"><label>'+t('input.rumble')+'</label><input type="checkbox" data-setting="rumble" '+(save.settings.rumble?'checked':'')+'></div>'+button(t('input.reset'),'bindings-reset');if(!prior)restoreScroll(p,scrollMemory.settings);return p;});};
 const actionBeforeInput=uiAction;uiAction=function(action){if(action.startsWith('bind-')){const name=action.slice(5);if(Object.hasOwn(DEFAULT_BINDINGS,name)){InputRouter.pending=name;settingsScreen(settingsReturn);}return;}if(action==='bindings-reset'){save.settings.bindings={};persist();settingsScreen(settingsReturn);return;}actionBeforeInput(action);};

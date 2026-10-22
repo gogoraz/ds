@@ -39,3 +39,7 @@ Thirty-two new species use fourteen behavior archetypes and the existing animate
 Seventeen original procedural music themes cover the hub and zones. A local WebP atlas supplies 48 level crops, 16 zone previews, four act banners, a rift background and seven bonus thumbnails. Artwork loads lazily with a 25 MiB cache limit. DejaVu UI/heading fonts are bundled with their license; S/M/L/XL text scales, reduced motion, contrast markers, held spell keys, 30/60 FPS and save-backup preview/restore are available.
 
 This is a testing preview. Physical iOS/Android/controller checks, the complete screenshot audit, long listening/LUFS measurements and human rift/bonus balance remain open. Paragon, ascension, online rankings and the remaining optional T13/T15 ideas are not included.
+
+### Input corrections (T05)
+
+Hold left mouse to follow the cursor; release, blur or hide the page to stop. Right click casts spell 1; all spell/dash HUD buttons are clickable. Stick sensitivity is adjustable from 0.5 to 1.5. Town shortcuts: F/I inventory, R rifts, M missions, H heroes, T talents, B bestiary, G trader, C campaign.
