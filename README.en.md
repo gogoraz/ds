@@ -47,3 +47,7 @@ Hold left mouse to follow the cursor; release, blur or hide the page to stop. Ri
 ### T06 — boss music
 
 Boss music now has three family-specific motifs and rhythms. Below 66% health it adds bass; below 33% it adds a choir layer. Notes remain in the zone mode and share the existing bounded voice budget.
+
+### T11 — contract variety
+
+Daily contracts include a specific spell slot, damage-free wins and single-weapon wins. The three offers are saved per date, so unlocking rifts cannot replace current contracts. Weekly rewards also unlock a persistent title and frame without duplicates.
