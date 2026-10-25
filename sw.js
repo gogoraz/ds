@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='hellbound-ashen-gate-walkable-v10',MEDIA='hellbound-media-walkable-v10',MEDIA_LIMIT=25*1024*1024,MEDIA_MAX_FILES=80;
+const CACHE='hellbound-ashen-gate-pixel-v010',MEDIA='hellbound-media-pixel-v010',MEDIA_LIMIT=25*1024*1024,MEDIA_MAX_FILES=80;
 const SHELL=['./','./index.html','./manifest.webmanifest','./icon.svg','./assets/reference/walkable-floors-v10.webp','./assets/reference/heroes.jpg','./assets/reference/monsters.jpg','./assets/reference/props.jpg','./assets/fonts/ui.woff2','./assets/fonts/heading.woff2'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>(key.startsWith('hellbound-ashen-gate-')||key.startsWith('hellbound-media-'))&&key!==CACHE&&key!==MEDIA).map(key=>caches.delete(key)))).then(()=>self.clients.claim()));});
