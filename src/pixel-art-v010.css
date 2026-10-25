@@ -1,0 +1,71 @@
+/* v0.10.0 pixel-art / gothic UI — bundled offline with the page */
+html[data-art-version="0.10.0"]{--pixel-gold:#dec18a;--pixel-shadow:#140e12;--pixel-edge:#74593b}
+html[data-art-version="0.10.0"] .panel{
+ background:linear-gradient(145deg,#28252c 0%,#151821 52%,#0b1016 100%);
+ border:2px solid var(--pixel-edge);
+ box-shadow:inset 0 0 0 2px #100e12,0 0 0 2px #131319,0 14px 45px #050607aa;
+}
+html[data-art-version="0.10.0"] h1,
+html[data-art-version="0.10.0"] h2,
+html[data-art-version="0.10.0"] h3,
+html[data-art-version="0.10.0"] .card h3,
+html[data-art-version="0.10.0"] .v6-card h3,
+html[data-art-version="0.10.0"] .shop-row h3,
+html[data-art-version="0.10.0"] .v2-title{
+ font-family:HellboundHeading,Georgia,serif;
+ font-weight:900;
+ color:#dec18a;
+ letter-spacing:.055em;
+ line-height:1.23;
+ text-shadow:1px 1px 0 #1a1416,2px 2px 0 #08080b,-1px -1px 0 #806b4b;
+ overflow-wrap:anywhere;
+}
+html[data-art-version="0.10.0"] .v6-town h1,
+html[data-art-version="0.10.0"] .v2-title{
+ color:#f1d99e;
+ letter-spacing:.075em;
+ text-shadow:1px 1px 0 #413128,2px 2px 0 #1c1416,3px 3px 0 #08090d;
+}
+html[data-art-version="0.10.0"] .v6-card,
+html[data-art-version="0.10.0"] .card,
+html[data-art-version="0.10.0"] .shop-row{
+ border-color:#806548;
+ background:linear-gradient(130deg,#24242b,#111820);
+ box-shadow:inset 0 0 0 1px #080b10;
+}
+html[data-art-version="0.10.0"] .v6-card.selected,
+html[data-art-version="0.10.0"] .card.selected{border-color:#e8c581}
+html[data-art-version="0.10.0"] .v6-card img,
+html[data-art-version="0.10.0"] .hero-view img,
+html[data-art-version="0.10.0"] .equipment img,
+html[data-art-version="0.10.0"] .card img,
+html[data-art-version="0.10.0"] .skill-list img{
+ image-rendering:pixelated;
+}
+html[data-art-version="0.10.0"] button,
+html[data-art-version="0.10.0"] select{
+ border-radius:2px;
+ border-color:#8b704a;
+ text-shadow:1px 1px 0 #0c0b10;
+}
+html[data-art-version="0.10.0"] .primary{
+ background:linear-gradient(180deg,#8e6c3a,#3d3228);
+ color:#fff0bd;
+ border-color:#d2ae6f;
+}
+html[data-art-version="0.10.0"] .eyebrow{
+ color:#aeb4ad;
+ letter-spacing:.14em;
+}
+html[data-art-version="0.10.0"] .v8-preview,
+html[data-art-version="0.10.0"] .v8-banner{image-rendering:pixelated}
+html[data-art-version="0.10.0"].readable h1,
+html[data-art-version="0.10.0"].readable h2,
+html[data-art-version="0.10.0"].readable h3{
+ font-family:HellboundUI,system-ui,sans-serif;
+ letter-spacing:.01em;
+}
+@media (max-width:600px){
+ html[data-art-version="0.10.0"] h1{letter-spacing:.025em}
+ html[data-art-version="0.10.0"] .v6-card h3{font-size:max(16px,1.06rem)}
+}
