@@ -39,6 +39,7 @@ jobs:
           node tests/achievements.cjs
           node tests/ui-v8.cjs
           node tests/terrain-readability.cjs
+          node tests/pixel-art-v010.cjs
       - name: Simulate campaign combat and terrain
         run: node tests/playtest.cjs
       - uses: actions/upload-artifact@v4
